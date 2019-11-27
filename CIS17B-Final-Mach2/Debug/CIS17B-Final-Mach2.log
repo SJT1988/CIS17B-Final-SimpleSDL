@@ -1,0 +1,10 @@
+﻿  StartScreen.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(125): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(140): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(142): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(167): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(186): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+  CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe
