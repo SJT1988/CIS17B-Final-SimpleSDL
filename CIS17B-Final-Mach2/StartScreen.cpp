@@ -4,6 +4,7 @@
 StartScreen::StartScreen()
 {
 	mTimer = Timer::Instance();
+	mAudio = AudioManager::Instance();
 	// mInput = InputManager::Instance();
 	// ================================================================
 	// Screen Animation variables
@@ -29,8 +30,6 @@ StartScreen::StartScreen()
 	mScore->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.425f, 0.0f)); 
 	mHighScore->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*-0.2f + 32.0f, 0.0f));
 	mTopBar->Parent(this);
-
-	std::cout << "WE HAVE LIFTOFF!" << std::endl;
 
 	// ================================================================
 	// Title entities
@@ -165,6 +164,7 @@ void StartScreen::ChangeMenuSelection(int change)
 	}
 
 	mCursor->Pos(mCursorStartPos + mCursorOffset * mMenuSelection);
+	mAudio->PlaySFX("FF7_CursorMove.wav");
 }
 
 void StartScreen::Update()

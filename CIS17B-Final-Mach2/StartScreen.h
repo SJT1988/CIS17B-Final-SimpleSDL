@@ -1,6 +1,7 @@
 #pragma once
 #include "AnimatedTexture.h"
 #include "InputManager.h"
+#include "AudioManager.h"
 #include "ScoreBoard.h"
 
 using namespace QuickSDL;
@@ -11,6 +12,7 @@ private:
 
 	Timer* mTimer;
 	InputManager* mInput;
+	AudioManager* mAudio;
 
 	// Top bar entities
 	GameEntity* mTopBar;
