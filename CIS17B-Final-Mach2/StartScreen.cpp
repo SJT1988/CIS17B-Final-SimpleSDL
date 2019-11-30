@@ -4,7 +4,7 @@
 StartScreen::StartScreen()
 {
 	mTimer = Timer::Instance();
-	mInput = InputManager::Instance();
+	// mInput = InputManager::Instance();
 	// ================================================================
 	// Screen Animation variables
 
@@ -132,7 +132,7 @@ void StartScreen::ResetAnimation()
 	// Title Color Lerp
 	mAlpha01AnimStartVal = 255;
 	mAlpha01AnimEndVal = 0;
-	mAlpha01AnimTotalTime = 2.0f;
+	mAlpha01AnimTotalTime = 1.0f;
 	mAlpha01AnimTimer = 0.0f;
 	mAlpha01AnimDone = false;
 
@@ -203,8 +203,16 @@ void StartScreen::Update()
 		}
 	}
 	
+	// If all of the animations are done, we can move the cursor:
 	if (mTitleAnimDone && mAlpha01AnimDone && mMenuAnimDone)
 	{
+		/* set the input if it does not already exist (this is what prevents screen from changing
+		before all the animations are done)		
+		*/
+		if (mInput == NULL)
+		{
+			mInput = InputManager::Instance();
+		}
 		if (mInput->KeyPressed(SDL_SCANCODE_DOWN) || mInput->KeyPressed(SDL_SCANCODE_S))
 			ChangeMenuSelection(1);
 		else if (mInput->KeyPressed(SDL_SCANCODE_UP) || mInput->KeyPressed(SDL_SCANCODE_W)) ChangeMenuSelection(-1);
