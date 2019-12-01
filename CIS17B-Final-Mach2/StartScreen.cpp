@@ -17,8 +17,13 @@ StartScreen::StartScreen()
 	mTopBar = new GameEntity(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f, 32.0f));
 	mCurrentDepth = new Texture("DEPTH:", "forgotmybazookaathome.ttf", 24, { 228,0,0 });
 	mDeepestDepth = new Texture("HI-SCORE:", "forgotmybazookaathome.ttf", 24, { 228,0,0 });
+<<<<<<< Updated upstream
 	mScore = new ScoreBoard(); // mCurrentDepth <-> mScore
 	mHighScore = new ScoreBoard(); // mDeepestDepth <-> mHighScore
+=======
+	mScore = new ScoreBoard({ 255,255,255 }); // mCurrentDepth <-> mScore
+	mHighScore = new ScoreBoard({ 255,255,255 }); // mDeepestDepth <-> mHighScore
+>>>>>>> Stashed changes
 
 	mCurrentDepth->Parent(mTopBar);
 	mDeepestDepth->Parent(mTopBar);

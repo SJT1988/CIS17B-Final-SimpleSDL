@@ -2,7 +2,7 @@
 
 ScoreBoard::ScoreBoard() : ScoreBoard({ 255,255,255 })
 {
-	
+
 }
 
 ScoreBoard::ScoreBoard(SDL_Color color)
