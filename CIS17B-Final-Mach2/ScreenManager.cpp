@@ -1,4 +1,5 @@
 #include "ScreenManager.h"
+#include <iostream>
 
 ScreenManager* ScreenManager::sInstance = NULL;
 
@@ -59,6 +60,11 @@ void ScreenManager::Update()
 		mPlayScreen->Update();
 		if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE))
 		{
+			if (Mix_PlayingMusic())
+			{
+				Mix_FadeOutMusic(500);
+				Mix_RewindMusic();
+			}
 			mStartScreen = new StartScreen();
 			mCurrentScreen = start;
 		}

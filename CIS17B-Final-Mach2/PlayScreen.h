@@ -31,7 +31,6 @@ private:
 
 
 public:
-
 	PlayScreen();
 	~PlayScreen();
 

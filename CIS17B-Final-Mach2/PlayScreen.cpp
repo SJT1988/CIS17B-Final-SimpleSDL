@@ -47,13 +47,18 @@ void PlayScreen::StartNextLevel()
 void PlayScreen::StartNewGame()
 {
 	mGameStarted = false;
+	mLevelStarted = false; // in case this is second go-around
 	mAudio->PlayMusic("smrpg_battlestart_padded.wav", 0); //0: no loop, -1(default): infinite loop
 	mCurrentLevel = 0;
 }
 
 void PlayScreen::Update()
 {
-	if (mGameStarted)
+	if (mGameStarted && mLevelStarted)
+	{
+		mHUD->Update();
+	}
+	else if (mGameStarted)
 	{
 		if (!mLevelStarted)
 		{

@@ -1,7 +1,13 @@
 #include "ScoreBoard.h"
 
-ScoreBoard::ScoreBoard()
+ScoreBoard::ScoreBoard() : ScoreBoard({ 255,255,255 })
 {
+	
+}
+
+ScoreBoard::ScoreBoard(SDL_Color color)
+{
+	mColor = color;
 	Score(0);
 }
 
@@ -29,7 +35,7 @@ void ScoreBoard::Score(int score)
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			mScore.push_back(new Texture("0", "forgotmybazookaathome.ttf", 32, { 255,255,255 }));
+			mScore.push_back(new Texture("0", "forgotmybazookaathome.ttf", 32, mColor));
 			mScore[i]->Parent(this);
 			mScore[i]->Pos(Vector2(-32.0f*i, 0.0f));
 		}
@@ -42,7 +48,7 @@ void ScoreBoard::Score(int score)
 
 		for (int i = 0; i <= lastIndex; i++)
 		{
-			mScore.push_back(new Texture(str.substr(i, 1), "forgotmybazookaathome.ttf", 32, { 255,255,255 }));
+			mScore.push_back(new Texture(str.substr(i, 1), "forgotmybazookaathome.ttf", 32, mColor));
 			mScore[i]->Parent(this);
 			mScore[i]->Pos(Vector2(-32.0f*(lastIndex - i), 0.0f));
 		}
