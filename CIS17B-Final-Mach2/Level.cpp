@@ -17,7 +17,11 @@ Level::Level(int level, HUD* hud)
 	mLevelNumber = new ScoreBoard({64, 64, 255 });
 	mLevelNumber->Score(mLevel);
 	mLevelNumber->Parent(this);
+<<<<<<< Updated upstream
 	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 128, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
+=======
+	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 123, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
+>>>>>>> Stashed changes
 
 	mLevelLabelOnScreen = 0.0f;
 	mLevelLabelOffScreen = 1.5f;

@@ -18,8 +18,13 @@ StartScreen::StartScreen()
 	mCurrentDepth = new Texture("DEPTH:", "forgotmybazookaathome.ttf", 24, { 228,0,0 });
 	mDeepestDepth = new Texture("HI-SCORE:", "forgotmybazookaathome.ttf", 24, { 228,0,0 });
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	mScore = new ScoreBoard(); // mCurrentDepth <-> mScore
 	mHighScore = new ScoreBoard(); // mDeepestDepth <-> mHighScore
+=======
+	mScore = new ScoreBoard({ 255,255,255 }); // mCurrentDepth <-> mScore
+	mHighScore = new ScoreBoard({ 255,255,255 }); // mDeepestDepth <-> mHighScore
+>>>>>>> Stashed changes
 =======
 	mScore = new ScoreBoard({ 255,255,255 }); // mCurrentDepth <-> mScore
 	mHighScore = new ScoreBoard({ 255,255,255 }); // mDeepestDepth <-> mHighScore
