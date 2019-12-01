@@ -8,6 +8,7 @@
 #define _MATHHELPER_H
 //--------------------------------------------------------------------------
 #include <math.h>
+#include <iostream>
 //--------------------------------------------------------------------------
 // QuickSDL
 //--------------------------------------------------------------------------
@@ -83,6 +84,12 @@ namespace QuickSDL {
 	inline Vector2 operator *(const Vector2& lhs, const float& rhs) {
 
 		return Vector2(lhs.x * rhs, lhs.y * rhs);
+	}
+
+	inline std::ostream& operator << (std::ostream& stream, const Vector2& vec)
+	{
+		stream << "<" << vec.x << ", " << vec.y << ">";
+		return stream;
 	}
 
 	//----------------------------------------------------------------

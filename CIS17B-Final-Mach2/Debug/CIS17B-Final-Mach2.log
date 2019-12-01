@@ -1,2 +1,4 @@
-﻿  Level.cpp
+﻿  ScoreBoard.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\scoreboard.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\scoreboard.cpp(82): warning C4018: '<': signed/unsigned mismatch
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe

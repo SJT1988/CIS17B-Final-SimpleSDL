@@ -2,7 +2,7 @@
 #include "InputManager.h"
 #include "AnimatedTexture.h"
 #include "AudioManager.h"
-#include "HUD.h"
+#include "Level.h"
 #include "GameEntity.h"
 
 using namespace QuickSDL;
@@ -21,6 +21,7 @@ private:
 	float mLevelStartTimer;
 	float mLevelStartDelay;
 
+	Level* mLevel;
 	bool mGameStarted;
 	bool mLevelStarted;
 	int mCurrentLevel;

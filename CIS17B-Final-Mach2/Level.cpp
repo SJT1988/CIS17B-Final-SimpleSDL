@@ -10,14 +10,14 @@ Level::Level(int level, HUD* hud)
 	mLevelStarted = false;
 	mLabelTimer = 0.0f;
 
-	mLevelLabel = new Texture("LEVEL", "forgotmybazookaathome.ttf", 24, { 255,255,255 });
+	mLevelLabel = new Texture("LEVEL", "forgotmybazookaathome.ttf", 24, { 64,0,255 });
 	mLevelLabel->Parent(this);
-	mLevelLabel->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f - 128, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
+	mLevelLabel->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f - 13, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
 
-	mLevelNumber = new ScoreBoard({64, 64, 255 });
+	mLevelNumber = new ScoreBoard(32,{64, 64, 255 },'l');
 	mLevelNumber->Score(mLevel);
 	mLevelNumber->Parent(this);
-	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 128, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
+	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 59, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
 
 	mLevelLabelOnScreen = 0.0f;
 	mLevelLabelOffScreen = 1.5f;
@@ -40,7 +40,7 @@ Level::~Level()
 
 void Level::StartLevel()
 {
-
+	mLevelStarted = true;
 }
 
 void Level::Update()
@@ -50,16 +50,19 @@ void Level::Update()
 		mLabelTimer += mTimer->DeltaTime();
 		if (mLabelTimer >= mLevelLabelOffScreen)
 		{
-			if (mLevel > 1)
-			{
-				StartLevel();
-			}
+			StartLevel();
 		}
 	}
 }
 
 void Level::Render()
 {
-	mLevelLabel->Render();
-	mLevelNumber->Render();
+	if (!mLevelStarted)
+	{
+		if (mLabelTimer > mLevelLabelOnScreen && mLabelTimer < mLevelLabelOffScreen)
+		{
+			mLevelLabel->Render();
+			mLevelNumber->Render();
+		}
+	}
 }

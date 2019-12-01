@@ -8,7 +8,6 @@ class HUD : public GameEntity
 {
 private:
 	Timer* mTimer;
-	static HUD* sInstance;
 
 	GameEntity* mTopBar;
 	Texture* mCurrentDepth;
@@ -16,15 +15,10 @@ private:
 	ScoreBoard* mScore;
 	ScoreBoard* mHighScore;
 
-private:
+public:
 
 	HUD();
 	~HUD();
-
-public:
-
-	static HUD* Instance();
-	static void Release();
 
 	void SetCurrentScore(int score);
 	void SetHighScore(int score);
