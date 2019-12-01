@@ -17,8 +17,8 @@ StartScreen::StartScreen()
 	mTopBar = new GameEntity(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f, 32.0f));
 	mCurrentDepth = new Texture("DEPTH:", "forgotmybazookaathome.ttf", 24, { 228,0,0 });
 	mDeepestDepth = new Texture("HI-SCORE:", "forgotmybazookaathome.ttf", 24, { 228,0,0 });
-	mScore = new ScoreBoard(32, { 255,255,255 }, 'R'); // mCurrentDepth <-> mScore
-	mHighScore = new ScoreBoard(32, { 255,255,255 }, 'L'); // mDeepestDepth <-> mHighScore
+	mScore = new ScoreBoard({ 255,255,255 }); // mCurrentDepth <-> mScore
+	mHighScore = new ScoreBoard({ 255,255,255 }); // mDeepestDepth <-> mHighScore
 
 	mCurrentDepth->Parent(mTopBar);
 	mDeepestDepth->Parent(mTopBar);
@@ -124,7 +124,7 @@ void StartScreen::ResetAnimation()
 		Graphics::Instance()->SCREEN_HEIGHT));
 	mTitleAnimEndPos = Vector2(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f,
 		Graphics::Instance()->SCREEN_HEIGHT*0.4f));
-	mTitleAnimTotalTime = 2.0f;
+	mTitleAnimTotalTime = 1.5f;
 	mTitleAnimTimer = 0.0f;
 	mTitleAnimDone = false;
 
@@ -140,7 +140,7 @@ void StartScreen::ResetAnimation()
 	mMenu01AnimEndPos = Vector2(0.0f, -24.0f);
 	mMenu02AnimStartPos = Vector2(Graphics::Instance()->SCREEN_WIDTH*0.67, 24.0f);
 	mMenu02AnimEndPos = Vector2(0.0f, 24.0f);
-	mMenuAnimTotalTime = 2.0f;
+	mMenuAnimTotalTime = 1.5f;
 	mMenuAnimTimer = 0.0f;
 	mMenuAnimDone = false;
 }

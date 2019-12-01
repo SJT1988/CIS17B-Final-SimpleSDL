@@ -1,4 +1,10 @@
-﻿  ScoreBoard.cpp
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\scoreboard.cpp(38): warning C4018: '<': signed/unsigned mismatch
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\scoreboard.cpp(82): warning C4018: '<': signed/unsigned mismatch
+﻿  StartScreen.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(124): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(139): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(141): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(166): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(186): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe
