@@ -1,6 +1,4 @@
 #pragma once
-#include "InputManager.h"
-#include "AnimatedTexture.h"
 #include "AudioManager.h"
 #include "Level.h"
 #include "GameEntity.h"
@@ -25,6 +23,8 @@ private:
 	bool mGameStarted;
 	bool mLevelStarted;
 	int mCurrentLevel;
+
+	Player* mPlayer;
 
 private:
 

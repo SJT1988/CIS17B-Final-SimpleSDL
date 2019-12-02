@@ -18,6 +18,7 @@ PlayScreen::PlayScreen()
 	mBeginLabel1->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.5f + 48));
 	
 	mLevel = NULL;
+	mPlayer = NULL;
 
 	//mStartLabel = new Texture("START!", "forgotmybazookaathome.ttf", 60, { 255,255,255 });
 	//mStartLabel->Parent(this);
@@ -39,6 +40,9 @@ PlayScreen::~PlayScreen()
 
 	delete mLevel;
 	mLevel = NULL;
+
+	delete mPlayer;
+	mPlayer = NULL;
 }
 
 void PlayScreen::StartNextLevel()
@@ -47,16 +51,23 @@ void PlayScreen::StartNextLevel()
 	mLevelStartTimer = 0.0f;
 	mLevelStarted = true;
 	delete mLevel;
-	mLevel = new Level(mCurrentLevel, mHUD);
+	mLevel = new Level(mCurrentLevel, mHUD, mPlayer);
 	mAudio->PlayMusic("SMRPG_BarrelVocano_Loop.wav", -1);
 }
 
 void PlayScreen::StartNewGame()
 {
+	delete mPlayer;
+	mPlayer = new Player();
+	mPlayer->Parent(this);
+	mPlayer->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.5f));
+	mPlayer->Active(false);
+
+	mHUD->SetCurrentScore(mPlayer->GetScore());
 	mGameStarted = false;
 	mLevelStarted = false; // in case this is second go-around
 	mAudio->PlayMusic("smrpg_battlestart_padded.wav", 0); //0: no loop, -1(default): infinite loop
-	mCurrentLevel = 998;
+	mCurrentLevel = 0;
 }
 
 void PlayScreen::Update()
@@ -65,6 +76,13 @@ void PlayScreen::Update()
 	{
 		mHUD->Update();
 		mLevel->Update();
+		mPlayer->Update();
+
+		if (mInput->KeyPressed(SDL_SCANCODE_N))
+		{
+			mLevelStarted = false;
+			// sets flag to start sequence over, increment level
+		}
 	}
 	else if (mGameStarted)
 	{
@@ -100,5 +118,6 @@ void PlayScreen::Render()
 			mLevel->Render();
 		}
 		mHUD->Render(); // draws HUD on top of map
+		mPlayer->Render();
 	}
 }

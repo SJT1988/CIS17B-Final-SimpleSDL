@@ -1,6 +1,6 @@
 #include "Level.h"
 
-Level::Level(int level, HUD* hud)
+Level::Level(int level, HUD* hud, Player* player)
 {
 	mTimer = Timer::Instance();
 	mHUD = hud;
@@ -22,6 +22,8 @@ Level::Level(int level, HUD* hud)
 	mLevelLabelOnScreen = 0.0f;
 	mLevelLabelOffScreen = 1.5f;
 
+	mPlayer = player;
+
 	//ReadyLabel stuff here ends at 30:40 in Galaga - 8
 }
 
@@ -34,6 +36,9 @@ Level::~Level()
 	mLevelLabel = NULL;
 	delete mLevelNumber;
 	mLevelNumber = NULL;
+
+	mPlayer = NULL; // player is not created in this class so we don't need to destroy it here...OH!
+
 	// delete mReadyLabel;
 	// mReadyLabel = NULL;
 }
@@ -51,6 +56,8 @@ void Level::Update()
 		if (mLabelTimer >= mLevelLabelOffScreen)
 		{
 			StartLevel();
+			mPlayer->Active(true);
+			mPlayer->Visible(true);
 		}
 	}
 }

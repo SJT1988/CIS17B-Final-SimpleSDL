@@ -1,6 +1,6 @@
 #pragma once
-#include "InputManager.h"
 #include "HUD.h"
+#include "Player.h"
 
 class Level : public GameEntity
 {
@@ -19,11 +19,13 @@ private:
 	float mReadyLabelOnScreen;
 	float mReadyLabelOffScreen;
 
+	Player* mPlayer;
+
 private:
 	void StartLevel();
 
 public:
-	Level(int level, HUD* hud);
+	Level(int level, HUD* hud, Player* player);
 	~Level();
 
 	void Update();
