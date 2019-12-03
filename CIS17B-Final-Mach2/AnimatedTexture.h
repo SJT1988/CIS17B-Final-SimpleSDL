@@ -79,6 +79,11 @@ namespace QuickSDL {
 		//---------------------------------------
 		void WrapMode(WRAP_MODE mode);
 
+		//---------------------------------------
+		//Reset the frame number to zero
+		//---------------------------------------
+		void FrameReset();
+
 		//---------------------------------------------------------------------------
 		//Used to update the animation frames and loop the animation if needed
 		//---------------------------------------------------------------------------

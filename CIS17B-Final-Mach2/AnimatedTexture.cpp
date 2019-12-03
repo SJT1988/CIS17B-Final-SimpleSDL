@@ -40,6 +40,11 @@ namespace QuickSDL {
 		mWrapMode = mode;
 	}
 
+	void AnimatedTexture::FrameReset()
+	{
+		mAnimationTimer = 0.0f;
+	}
+
 	void AnimatedTexture::Update() {
 
 		if (!mAnimationDone) {

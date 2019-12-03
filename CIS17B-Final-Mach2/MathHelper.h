@@ -98,6 +98,17 @@ namespace QuickSDL {
 		return stream;
 	}
 
+	inline bool operator== (const Vector2 &v1, const Vector2 &v2)
+	{
+		if (v1.x == v2.x && v1.y == v2.y) return true;
+		else return false;
+	}
+	inline bool operator!= (const Vector2 &v1, const Vector2 &v2)
+	{
+		if (v1.x == v2.x && v1.y == v2.y) return false;
+		else return true;
+	}
+
 	//----------------------------------------------------------------
 	//Rotates the given vector by the given angle around the origin   
 	//(Does not change the original vector)                             

@@ -26,7 +26,7 @@ namespace QuickSDL {
 		// SDL_Texture* mTex;
 
 		//Used to render the texture
-		Graphics* mGraphics;
+		
 
 		//Width of the texture
 		int mWidth;
@@ -44,6 +44,8 @@ namespace QuickSDL {
 	public:
 		SDL_Texture* mTex;
 		SDL_Color* mColor;
+		Graphics* mGraphics;
+		SDL_RendererFlip mFlip = SDL_FLIP_NONE;
 	public:
 		//--------------------------------------------------------------
 		//Loads a whole texture from a file (relative to the exe path)
