@@ -80,6 +80,12 @@ Player::~Player()
 		delete anim;
 		anim = NULL;
 	}
+
+	for (Bullet* b : mBullets)
+	{
+		delete b;
+		b = NULL;
+	}
 }
 
 void Player::HandleMovement()
@@ -255,23 +261,30 @@ void Player::AddScore(int change)
 
 void Player::Update()
 {
-	/*
-	if (mAnimating)
-	{
-		// do stuff
-	}
-	else
-	{
-		if (Active())
-		{
-			HandleMovement();
-		}
-	}
-	*/
 	if (Active())
 	{
 		HandleMovement();
 		mPlayerTex->Update();
+	}
+	if (mInput->KeyPressed(SDL_SCANCODE_SPACE))
+	{
+		if (mBullets.size() < MAX_BULLETS)
+		{
+			Bullet* bullet = new Bullet(mDirection);
+			bullet->Parent(this);
+			bullet->Pos(VEC2_ZERO);
+			mBullets.push_back(bullet);
+		}
+	}
+	for (Bullet* b : mBullets)
+	{
+		if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
+			(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
+		{
+			delete b;
+			b = NULL;
+		}
+		b->Update();
 	}
 }
 
@@ -281,5 +294,9 @@ void Player::Render()
 	{
 		mPlayerTex->mFlip = Player::mFlip;
 		mPlayerTex->Render();
+	}
+	for (Bullet* b : mBullets)
+	{
+		b->Render();
 	}
 }

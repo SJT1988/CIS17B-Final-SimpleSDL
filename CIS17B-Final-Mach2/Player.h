@@ -2,6 +2,7 @@
 #include "AnimatedTexture.h"
 #include "InputManager.h"
 #include "AudioManager.h"
+#include "Bullet.h"
 #include <vector>
 
 using namespace QuickSDL;
@@ -31,6 +32,14 @@ private:
 	float mMoveSpeed;
 	Vector2 mMoveBounds;
 	const float OFFSET = 16.0f;
+
+	//==================
+	// Bullet
+
+	const static int MAX_BULLETS = 4;
+	std::vector<Bullet*> mBullets;
+
+	
 
 private:
 
