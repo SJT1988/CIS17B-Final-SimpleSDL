@@ -26,6 +26,11 @@ private:
 	bool mLevelStarted;
 	int mCurrentLevel;
 
+<<<<<<< Updated upstream
+=======
+	
+
+>>>>>>> Stashed changes
 private:
 
 	void StartNextLevel();
@@ -36,6 +41,7 @@ public:
 	~PlayScreen();
 
 	void StartNewGame();
+	Player* mPlayer;
 
 	void Update();
 	void Render();
