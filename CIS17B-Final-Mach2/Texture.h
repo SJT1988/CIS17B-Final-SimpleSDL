@@ -11,6 +11,7 @@
 //---------------------------------------------------------------
 #include "GameEntity.h"
 #include "AssetManager.h"
+#include <string>
 //---------------------------------------------------------------
 // QuickSDL
 //---------------------------------------------------------------
@@ -46,6 +47,7 @@ namespace QuickSDL {
 		SDL_Color* mColor;
 		Graphics* mGraphics;
 		SDL_RendererFlip mFlip = SDL_FLIP_NONE;
+		std::string mTexturePath;
 	public:
 		//--------------------------------------------------------------
 		//Loads a whole texture from a file (relative to the exe path)

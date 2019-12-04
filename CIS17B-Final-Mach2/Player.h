@@ -37,7 +37,8 @@ private:
 	// Bullet
 
 	const static int MAX_BULLETS = 4;
-	std::vector<Bullet*> mBullets;
+	Bullet* mBullets[MAX_BULLETS];
+	// std::vector<Bullet*> mBullets;
 
 	
 

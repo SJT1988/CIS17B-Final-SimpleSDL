@@ -137,6 +137,7 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScreen.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScreen.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
@@ -167,6 +169,16 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Debug\Assets\map00.map" />
+    <None Include="Debug\Assets\map01.map" />
+    <None Include="Debug\Assets\map02.map" />
+    <None Include="Debug\Assets\map03.map" />
+    <None Include="Debug\Assets\map04.map" />
+    <None Include="Debug\Assets\map05.map" />
+    <None Include="Debug\Assets\map06.map" />
+    <None Include="Debug\Assets\map07.map" />
+    <None Include="Debug\Assets\map08.map" />
+    <None Include="Debug\Assets\map09.map" />
     <None Include="libfreetype-6.dll" />
     <None Include="libpng16-16.dll" />
     <None Include="SDL2.dll" />

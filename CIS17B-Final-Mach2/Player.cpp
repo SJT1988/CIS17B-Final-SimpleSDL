@@ -67,6 +67,16 @@ Player::Player()
 	// The player's body occupies a 32x32 pixel region, and his reference is his center, so 32/2 = 16
 	//provides the correct offset for the bounds.
 	mMoveBounds = Vector2(Graphics::Instance()->SCREEN_WIDTH - OFFSET, Graphics::Instance()->SCREEN_HEIGHT - OFFSET);
+
+	//====================
+	// Bullets
+
+	for (int i = 0; i < MAX_BULLETS; i++)
+	{
+		mBullets[i] = new Bullet();
+		mBullets[i]->Parent(this);
+		mBullets[i]->Pos() = VEC2_ZERO;
+	}
 }
 
 Player::~Player()
@@ -90,7 +100,7 @@ Player::~Player()
 
 void Player::HandleMovement()
 {
-	std::cout << mDirection << std::endl;
+	// std::cout << mDirection << std::endl;
 
 	// =========================
 	// Shoot
@@ -123,7 +133,6 @@ void Player::HandleMovement()
 			return;
 		}
 	}
-
 
 	// ===================
 	// Diagonal directions
@@ -218,9 +227,6 @@ void Player::HandleMovement()
 		}
 	}
 	
-
-	
-
 	// ====================
 	// Set Position
 	Vector2 pos = Pos(local);
@@ -266,24 +272,39 @@ void Player::Update()
 		HandleMovement();
 		mPlayerTex->Update();
 	}
+	
 	if (mInput->KeyPressed(SDL_SCANCODE_SPACE))
 	{
+		/*
 		if (mBullets.size() < MAX_BULLETS)
 		{
 			Bullet* bullet = new Bullet(mDirection);
 			bullet->Parent(this);
 			bullet->Pos(VEC2_ZERO);
+			bullet->Active(true);
 			mBullets.push_back(bullet);
+		}
+		*/
+		for (Bullet* b : mBullets)
+		{
+			if (!(b->Active()) )
+			{
+				b->mDirection = this->mDirection;
+				b->Fire();
+				break;
+			}
+			/*
+			if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
+				(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
+			{
+				b->Reload();
+			}
+			b->Update();
+			*/
 		}
 	}
 	for (Bullet* b : mBullets)
 	{
-		if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
-			(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
-		{
-			delete b;
-			b = NULL;
-		}
 		b->Update();
 	}
 }
@@ -297,6 +318,7 @@ void Player::Render()
 	}
 	for (Bullet* b : mBullets)
 	{
-		b->Render();
+		if (b->Active())
+			b->Render();
 	}
 }

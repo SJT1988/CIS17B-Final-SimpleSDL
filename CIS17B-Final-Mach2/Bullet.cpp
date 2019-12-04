@@ -1,12 +1,13 @@
 #include "Bullet.h"
 
-Bullet::Bullet(Vector2 direction)
+Bullet::Bullet()
 {
+	Active(false);
 	mTimer = Timer::Instance();
 	mTexture = new Texture("bullet.png");
 	mTexture->Parent(this);
 	mTexture->Pos(VEC2_ZERO);
-	mDirection = direction;
+	mDirection = VEC2_ZERO;
 }
 
 Bullet::~Bullet()
@@ -15,20 +16,35 @@ Bullet::~Bullet()
 
 	delete mTexture;
 	mTexture = NULL;
-	delete &mDirection;
-	mDirection = NULL;
-	delete &mSpeed;
-	mSpeed = NULL;
+	
+	
 }
-/*
+
 void Bullet::Fire()
 {
-	Pos(local) += mDirection * mSpeed * mTimer->DeltaTime();
+	Active(true);
 }
-*/
+
+
+void Bullet::Reload()
+{
+	Active(false);
+	Pos(local) = VEC2_ZERO;
+}
+
 void Bullet::Update()
 {
-	Translate(mDirection * mSpeed * mTimer->DeltaTime());
+	if (Active())
+	{
+		Translate(mDirection * mSpeed * mTimer->DeltaTime());
+		
+		if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
+			(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
+		{
+			Reload();
+		}
+	}
+
 	/*
 	if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
 		(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
@@ -41,5 +57,8 @@ void Bullet::Update()
 
 void Bullet::Render()
 {
-	mTexture->Render();
+	if (Active())
+	{
+		mTexture->Render();
+	}
 }

@@ -28,6 +28,9 @@ namespace QuickSDL {
 
 		mRenderRect.w = mWidth;
 		mRenderRect.h = mHeight;
+
+		//Store path of texture:
+		mTexturePath = filename;
 	}
 
 	Texture::Texture(std::string filename, int x, int y, int w, int h) {
@@ -51,6 +54,9 @@ namespace QuickSDL {
 		mClipRect.y = y;
 		mClipRect.w = mWidth;
 		mClipRect.h = mHeight;
+
+		//Store path of texture:
+		mTexturePath = filename;
 	}
 
 	Texture::Texture(std::string text, std::string fontPath, int size, SDL_Color color) {

@@ -15,10 +15,11 @@ public:
 	Vector2 mDirection;
 
 public:
-	Bullet(Vector2 direction);
+	Bullet();
 	~Bullet();
 	
-	// void Fire();
+	void Fire();
+	void Reload();
 
 	void Update();
 	void Render();
