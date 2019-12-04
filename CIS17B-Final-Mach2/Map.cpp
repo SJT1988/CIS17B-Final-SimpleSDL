@@ -20,6 +20,7 @@ void Map::LoadMap()
 	char c;
 	std::fstream mapFile;
 	mapFile.open(mMapFilePath);
+	if (!mapFile) { std::cout << "Failed to open file\n"; }
 
 	int srcX, srcY;
 

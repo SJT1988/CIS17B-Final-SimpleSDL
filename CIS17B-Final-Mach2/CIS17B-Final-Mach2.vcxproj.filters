@@ -172,35 +172,5 @@
     <None Include="libfreetype-6.dll">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Debug\Assets\map00.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map01.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map02.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map03.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map04.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map05.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map06.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map07.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map08.map">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Debug\Assets\map09.map">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
 </Project>

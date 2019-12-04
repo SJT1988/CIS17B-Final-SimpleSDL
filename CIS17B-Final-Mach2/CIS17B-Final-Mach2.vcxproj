@@ -169,16 +169,6 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Debug\Assets\map00.map" />
-    <None Include="Debug\Assets\map01.map" />
-    <None Include="Debug\Assets\map02.map" />
-    <None Include="Debug\Assets\map03.map" />
-    <None Include="Debug\Assets\map04.map" />
-    <None Include="Debug\Assets\map05.map" />
-    <None Include="Debug\Assets\map06.map" />
-    <None Include="Debug\Assets\map07.map" />
-    <None Include="Debug\Assets\map08.map" />
-    <None Include="Debug\Assets\map09.map" />
     <None Include="libfreetype-6.dll" />
     <None Include="libpng16-16.dll" />
     <None Include="SDL2.dll" />
