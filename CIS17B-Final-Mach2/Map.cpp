@@ -83,7 +83,7 @@ void Map::AddTile(int srcX, int srcY, int posX, int posY)
 	// std::cout << srcX << " " << srcY << std::endl;
 	mMapTiles.push_back(new Texture(mTileSetPath, srcX, srcY, TILE_SIZE, TILE_SIZE));
 	mMapTiles.back()->Parent(this);
-	mMapTiles.back()->Pos() = Vector2(posX, posY);
+	mMapTiles.back()->Pos( Vector2(posX, posY));
 }
 
 void Map::Render()

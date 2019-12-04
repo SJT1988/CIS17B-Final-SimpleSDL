@@ -9,15 +9,16 @@ class Map : public GameEntity
 {
 private:
 
-	const int TILE_SIZE = 32;
-	std::vector<Texture*> mMapTiles;
-	
-	// for Load()ing a map
-	int mSizeX;
-	int mSizeY;
+	std::vector<Texture*> mMapTiles;	
 	std::string mTileSetPath;
 	std::string mMapFilePath;
 	
+public:
+
+	const int TILE_SIZE = 32;
+	int mSizeX;
+	int mSizeY;
+
 public:
 	Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY);
 	~Map();

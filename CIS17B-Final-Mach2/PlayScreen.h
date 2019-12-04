@@ -2,6 +2,7 @@
 #include "AudioManager.h"
 #include "Level.h"
 #include "GameEntity.h"
+#include "Map.h"
 
 using namespace QuickSDL;
 
@@ -13,11 +14,15 @@ private:
 	AudioManager* mAudio;
 	HUD* mHUD;
 
-	// Texture* mStartLabel;
+	// "PREPARE TO INVESTIGATE!"
 	Texture* mBeginLabel0;
 	Texture* mBeginLabel1;
 	float mLevelStartTimer;
 	float mLevelStartDelay;
+
+	// "Level N"
+	Texture* mLevelLabel;
+	ScoreBoard* mLevelNumber;
 
 	Level* mLevel;
 	bool mGameStarted;
@@ -26,9 +31,14 @@ private:
 
 	Player* mPlayer;
 
+	std::string mTileSetPath;
+	Map* mMaps[10];
+	Map* mFxMaps[10];
+
 private:
 
 	void StartNextLevel();
+	void CreateMaps();
 
 
 public:
