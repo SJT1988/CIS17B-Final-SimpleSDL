@@ -1,0 +1,93 @@
+﻿  AnimatedTexture.cpp
+  AssetManager.cpp
+  AudioManager.cpp
+  Bullet.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\bullet.cpp(39): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  GameEntity.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\gameentity.cpp(56): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\gameentity.cpp(61): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  GameManager.cpp
+  Graphics.cpp
+  HUD.cpp
+  InputManager.cpp
+  Level.cpp
+  main.cpp
+  Map.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Player.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(146): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(154): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(162): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(170): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  PlayScreen.cpp
+  ScoreBoard.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\scoreboard.cpp(47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  ScreenManager.cpp
+  StartScreen.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(124): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(139): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(141): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(166): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\startscreen.cpp(186): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+  Texture.cpp
+  Timer.cpp
+  Generating Code...
+AssetManager.obj : error LNK2019: unresolved external symbol SDL_GetError referenced in function "private: struct _TTF_Font * __cdecl QuickSDL::AssetManager::GetFont(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)" (?GetFont@AssetManager@QuickSDL@@AEAAPEAU_TTF_Font@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z)
+AudioManager.obj : error LNK2001: unresolved external symbol SDL_GetError
+Graphics.obj : error LNK2001: unresolved external symbol SDL_GetError
+AssetManager.obj : error LNK2019: unresolved external symbol SDL_RWFromFile referenced in function "public: struct Mix_Chunk * __cdecl QuickSDL::AssetManager::GetSFX(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?GetSFX@AssetManager@QuickSDL@@QEAAPEAUMix_Chunk@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+AssetManager.obj : error LNK2019: unresolved external symbol Mix_LoadWAV_RW referenced in function "public: struct Mix_Chunk * __cdecl QuickSDL::AssetManager::GetSFX(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?GetSFX@AssetManager@QuickSDL@@QEAAPEAUMix_Chunk@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+AssetManager.obj : error LNK2019: unresolved external symbol Mix_LoadMUS referenced in function "public: struct _Mix_Music * __cdecl QuickSDL::AssetManager::GetMusic(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?GetMusic@AssetManager@QuickSDL@@QEAAPEAU_Mix_Music@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+AssetManager.obj : error LNK2019: unresolved external symbol Mix_FreeChunk referenced in function "private: __cdecl QuickSDL::AssetManager::~AssetManager(void)" (??1AssetManager@QuickSDL@@AEAA@XZ)
+AssetManager.obj : error LNK2019: unresolved external symbol Mix_FreeMusic referenced in function "private: __cdecl QuickSDL::AssetManager::~AssetManager(void)" (??1AssetManager@QuickSDL@@AEAA@XZ)
+AssetManager.obj : error LNK2019: unresolved external symbol SDL_GetBasePath referenced in function "private: struct _TTF_Font * __cdecl QuickSDL::AssetManager::GetFont(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)" (?GetFont@AssetManager@QuickSDL@@AEAAPEAU_TTF_Font@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z)
+AssetManager.obj : error LNK2019: unresolved external symbol SDL_DestroyTexture referenced in function "private: __cdecl QuickSDL::AssetManager::~AssetManager(void)" (??1AssetManager@QuickSDL@@AEAA@XZ)
+AssetManager.obj : error LNK2019: unresolved external symbol TTF_OpenFont referenced in function "private: struct _TTF_Font * __cdecl QuickSDL::AssetManager::GetFont(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)" (?GetFont@AssetManager@QuickSDL@@AEAAPEAU_TTF_Font@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z)
+AssetManager.obj : error LNK2019: unresolved external symbol TTF_CloseFont referenced in function "private: __cdecl QuickSDL::AssetManager::~AssetManager(void)" (??1AssetManager@QuickSDL@@AEAA@XZ)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_Quit referenced in function "private: __cdecl QuickSDL::AudioManager::~AudioManager(void)" (??1AudioManager@QuickSDL@@AEAA@XZ)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_OpenAudio referenced in function "private: __cdecl QuickSDL::AudioManager::AudioManager(void)" (??0AudioManager@QuickSDL@@AEAA@XZ)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_PlayChannelTimed referenced in function "public: void __cdecl QuickSDL::AudioManager::PlaySFX(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?PlaySFX@AudioManager@QuickSDL@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_PlayMusic referenced in function "public: void __cdecl QuickSDL::AudioManager::PlayMusic(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)" (?PlayMusic@AudioManager@QuickSDL@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_PauseMusic referenced in function "public: void __cdecl QuickSDL::AudioManager::PauseMusic(void)" (?PauseMusic@AudioManager@QuickSDL@@QEAAXXZ)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_ResumeMusic referenced in function "public: void __cdecl QuickSDL::AudioManager::ResumeMusic(void)" (?ResumeMusic@AudioManager@QuickSDL@@QEAAXXZ)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_PausedMusic referenced in function "public: void __cdecl QuickSDL::AudioManager::ResumeMusic(void)" (?ResumeMusic@AudioManager@QuickSDL@@QEAAXXZ)
+AudioManager.obj : error LNK2019: unresolved external symbol Mix_PlayingMusic referenced in function "public: void __cdecl QuickSDL::AudioManager::PauseMusic(void)" (?PauseMusic@AudioManager@QuickSDL@@QEAAXXZ)
+PlayScreen.obj : error LNK2001: unresolved external symbol Mix_PlayingMusic
+ScreenManager.obj : error LNK2001: unresolved external symbol Mix_PlayingMusic
+GameManager.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "public: void __cdecl QuickSDL::GameManager::Run(void)" (?Run@GameManager@QuickSDL@@QEAAXXZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: struct SDL_Texture * __cdecl QuickSDL::Graphics::CreateTextTexture(struct _TTF_Font *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct SDL_Color)" (?CreateTextTexture@Graphics@QuickSDL@@QEAAPEAUSDL_Texture@@PEAU_TTF_Font@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@USDL_Color@@@Z)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "private: bool __cdecl QuickSDL::Graphics::Init(void)" (?Init@Graphics@QuickSDL@@AEAA_NXZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "private: __cdecl QuickSDL::Graphics::~Graphics(void)" (??1Graphics@QuickSDL@@AEAA@XZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_CreateRenderer referenced in function "private: bool __cdecl QuickSDL::Graphics::Init(void)" (?Init@Graphics@QuickSDL@@AEAA_NXZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_CreateTextureFromSurface referenced in function "public: struct SDL_Texture * __cdecl QuickSDL::Graphics::CreateTextTexture(struct _TTF_Font *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct SDL_Color)" (?CreateTextTexture@Graphics@QuickSDL@@QEAAPEAUSDL_Texture@@PEAU_TTF_Font@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@USDL_Color@@@Z)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawColor referenced in function "private: bool __cdecl QuickSDL::Graphics::Init(void)" (?Init@Graphics@QuickSDL@@AEAA_NXZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "public: void __cdecl QuickSDL::Graphics::ClearBackBuffer(void)" (?ClearBackBuffer@Graphics@QuickSDL@@QEAAXXZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_RenderCopyEx referenced in function "public: void __cdecl QuickSDL::Graphics::DrawTexture(struct SDL_Texture *,struct SDL_Rect *,struct SDL_Rect *,float,enum SDL_RendererFlip)" (?DrawTexture@Graphics@QuickSDL@@QEAAXPEAUSDL_Texture@@PEAUSDL_Rect@@1MW4SDL_RendererFlip@@@Z)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_RenderPresent referenced in function "public: void __cdecl QuickSDL::Graphics::Render(void)" (?Render@Graphics@QuickSDL@@QEAAXXZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_DestroyRenderer referenced in function "private: __cdecl QuickSDL::Graphics::~Graphics(void)" (??1Graphics@QuickSDL@@AEAA@XZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "private: bool __cdecl QuickSDL::Graphics::Init(void)" (?Init@Graphics@QuickSDL@@AEAA_NXZ)
+Graphics.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "private: __cdecl QuickSDL::Graphics::~Graphics(void)" (??1Graphics@QuickSDL@@AEAA@XZ)
+Graphics.obj : error LNK2019: unresolved external symbol IMG_Init referenced in function "private: bool __cdecl QuickSDL::Graphics::Init(void)" (?Init@Graphics@QuickSDL@@AEAA_NXZ)
+Graphics.obj : error LNK2019: unresolved external symbol IMG_Quit referenced in function "private: __cdecl QuickSDL::Graphics::~Graphics(void)" (??1Graphics@QuickSDL@@AEAA@XZ)
+Graphics.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: struct SDL_Texture * __cdecl QuickSDL::Graphics::LoadTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?LoadTexture@Graphics@QuickSDL@@QEAAPEAUSDL_Texture@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Graphics.obj : error LNK2019: unresolved external symbol TTF_Init referenced in function "private: bool __cdecl QuickSDL::Graphics::Init(void)" (?Init@Graphics@QuickSDL@@AEAA_NXZ)
+Graphics.obj : error LNK2019: unresolved external symbol TTF_RenderText_Solid referenced in function "public: struct SDL_Texture * __cdecl QuickSDL::Graphics::CreateTextTexture(struct _TTF_Font *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct SDL_Color)" (?CreateTextTexture@Graphics@QuickSDL@@QEAAPEAUSDL_Texture@@PEAU_TTF_Font@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@USDL_Color@@@Z)
+Graphics.obj : error LNK2019: unresolved external symbol TTF_Quit referenced in function "private: __cdecl QuickSDL::Graphics::~Graphics(void)" (??1Graphics@QuickSDL@@AEAA@XZ)
+InputManager.obj : error LNK2019: unresolved external symbol SDL_GetKeyboardState referenced in function "private: __cdecl QuickSDL::InputManager::InputManager(void)" (??0InputManager@QuickSDL@@AEAA@XZ)
+InputManager.obj : error LNK2019: unresolved external symbol SDL_GetMouseState referenced in function "public: void __cdecl QuickSDL::InputManager::Update(void)" (?Update@InputManager@QuickSDL@@QEAAXXZ)
+ScreenManager.obj : error LNK2019: unresolved external symbol Mix_FadeOutMusic referenced in function "public: void __cdecl ScreenManager::Update(void)" (?Update@ScreenManager@@QEAAXXZ)
+ScreenManager.obj : error LNK2019: unresolved external symbol Mix_RewindMusic referenced in function "public: void __cdecl ScreenManager::Update(void)" (?Update@ScreenManager@@QEAAXXZ)
+StartScreen.obj : error LNK2019: unresolved external symbol SDL_SetTextureAlphaMod referenced in function "public: __cdecl StartScreen::StartScreen(void)" (??0StartScreen@@QEAA@XZ)
+StartScreen.obj : error LNK2019: unresolved external symbol SDL_SetTextureBlendMode referenced in function "public: __cdecl StartScreen::StartScreen(void)" (??0StartScreen@@QEAA@XZ)
+Texture.obj : error LNK2019: unresolved external symbol SDL_QueryTexture referenced in function "public: __cdecl QuickSDL::Texture::Texture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,struct SDL_Color)" (??0Texture@QuickSDL@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HUSDL_Color@@@Z)
+Timer.obj : error LNK2019: unresolved external symbol SDL_GetTicks referenced in function "public: void __cdecl QuickSDL::Timer::Reset(void)" (?Reset@Timer@QuickSDL@@QEAAXXZ)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+..\SDL2-2.0.10\lib\x86\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+..\SDL2-2.0.10\lib\x86\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+..\SDL2_image-2.0.5\lib\x86\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+..\SDL2_ttf-2.0.15\lib\x86\SDL2_ttf.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+..\SDL2_mixer-2.0.4\lib\x86\SDL2_mixer.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\x64\Debug\CIS17B-Final-Mach2.exe : fatal error LNK1120: 46 unresolved externals
