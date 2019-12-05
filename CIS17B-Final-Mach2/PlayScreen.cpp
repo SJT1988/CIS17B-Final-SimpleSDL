@@ -27,7 +27,7 @@ PlayScreen::PlayScreen()
 	mLevelNumber->Parent(this);
 	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 123, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
 	//==============
-	//mLevel = NULL;
+	
 	mPlayer = NULL;
 
 	// Map stuff
@@ -56,9 +56,6 @@ PlayScreen::~PlayScreen()
 	delete mBeginLabel1;
 	mBeginLabel1 = NULL;
 
-	//delete mLevel;
-	//mLevel = NULL;
-
 	delete mPlayer;
 	mPlayer = NULL;
 
@@ -71,22 +68,17 @@ PlayScreen::~PlayScreen()
 
 	for (Map* m : mFxMaps)
 	{
-		delete m; // maps are created in this class
+		delete m;
 		m = NULL;
 	}
 }
 
 void PlayScreen::StartNextLevel()
 {
-	//mCurrentLevel++;
-	//mLevelNumber->Score(mCurrentLevel);
-	//mHUD->SetCurrentScore(mCurrentLevel);
 	mLevelStartTimer = 0.0f;
 	mLevelStarted = true;
-	//delete mLevel;
-	//mLevel = new Level(mCurrentLevel, mHUD, mPlayer);
 	if (mCurrentLevel == 1)
-		mAudio->PlayMusic("SMRPG_BarrelVocano_Loop.wav", -1);
+		mAudio->PlayMusic("SMRPG_BarrelVocano_LH.wav", -1);
 }
 
 void PlayScreen::StartNewGame()
@@ -142,8 +134,6 @@ void PlayScreen::Update()
 {
 	if (mGameStarted && mLevelStarted)
 	{
-		//mHUD->Update(); // fun-fact: HUD's Update() function is empty!
-		//mLevel->Update();
 		mPlayer->Update();
 
 		if (mInput->KeyPressed(SDL_SCANCODE_N))
@@ -151,7 +141,6 @@ void PlayScreen::Update()
 			mLevelStarted = false;
 			mPlayer->Active(false);
 			mPlayer->Visible(false);
-			// sets flag to start sequence over, increment level
 		}
 	}
 	else if (mGameStarted)
@@ -164,8 +153,8 @@ void PlayScreen::Update()
 				StartNextLevel();
 				if (mCurrentLevel > 0)
 				{
-					mMaps[mCurrentLevel]->LoadMap();
-					mFxMaps[mCurrentLevel]->LoadMap();
+					mMaps[mCurrentLevel-1]->LoadMap();
+					mFxMaps[mCurrentLevel-1]->LoadMap();
 				}
 				mPlayer->Active(true);
 				mPlayer->Visible(true);
@@ -212,15 +201,13 @@ void PlayScreen::Render()
 		if (mLevelStarted)
 		{
 			if (mCurrentLevel > 0)
-				mMaps[mCurrentLevel]->Render();
-			//mLevel->Render();
+				mMaps[mCurrentLevel-1]->Render();
 			mPlayer->Active(true);
 			mPlayer->Visible(true);
 			mPlayer->Render();
 			if (mCurrentLevel > 0)
-				mFxMaps[mCurrentLevel]->Render();
+				mFxMaps[mCurrentLevel-1]->Render();
 		}
-		
-		mHUD->Render(); // draws HUD on top of map
+		mHUD->Render();
 	}
 }
