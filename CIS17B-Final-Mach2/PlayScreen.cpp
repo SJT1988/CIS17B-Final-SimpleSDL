@@ -23,11 +23,11 @@ PlayScreen::PlayScreen()
 	mLevelLabel->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f - 13, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
 
 	mLevelNumber = new ScoreBoard({ 64, 64, 255 });
-	mLevelNumber->Score(mCurrentLevel + 1);
+	mLevelNumber->Score(mCurrentLevel);
 	mLevelNumber->Parent(this);
 	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 123, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
 	//==============
-	mLevel = NULL;
+	//mLevel = NULL;
 	mPlayer = NULL;
 
 	// Map stuff
@@ -56,8 +56,8 @@ PlayScreen::~PlayScreen()
 	delete mBeginLabel1;
 	mBeginLabel1 = NULL;
 
-	delete mLevel;
-	mLevel = NULL;
+	//delete mLevel;
+	//mLevel = NULL;
 
 	delete mPlayer;
 	mPlayer = NULL;
@@ -78,12 +78,13 @@ PlayScreen::~PlayScreen()
 
 void PlayScreen::StartNextLevel()
 {
-	mCurrentLevel++;
-	mLevelNumber->Score(mCurrentLevel);
+	//mCurrentLevel++;
+	//mLevelNumber->Score(mCurrentLevel);
+	//mHUD->SetCurrentScore(mCurrentLevel);
 	mLevelStartTimer = 0.0f;
 	mLevelStarted = true;
-	delete mLevel;
-	mLevel = new Level(mCurrentLevel, mHUD, mPlayer);
+	//delete mLevel;
+	//mLevel = new Level(mCurrentLevel, mHUD, mPlayer);
 	if (mCurrentLevel == 1)
 		mAudio->PlayMusic("SMRPG_BarrelVocano_Loop.wav", -1);
 }
@@ -96,11 +97,11 @@ void PlayScreen::StartNewGame()
 	mPlayer->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.5f));
 	mPlayer->Active(false);
 
-	mHUD->SetCurrentScore(mPlayer->GetScore());
+	mCurrentLevel = 0;
+	mHUD->SetCurrentScore(0);
 	mGameStarted = false;
 	mLevelStarted = false; // in case this is second go-around
 	mAudio->PlayMusic("smrpg_battlestart_padded.wav", 0); //0: no loop, -1(default): infinite loop
-	mCurrentLevel = 0;
 }
 
 void PlayScreen::CreateMaps()
@@ -142,12 +143,14 @@ void PlayScreen::Update()
 	if (mGameStarted && mLevelStarted)
 	{
 		//mHUD->Update(); // fun-fact: HUD's Update() function is empty!
-		mLevel->Update();
+		//mLevel->Update();
 		mPlayer->Update();
 
 		if (mInput->KeyPressed(SDL_SCANCODE_N))
 		{
 			mLevelStarted = false;
+			mPlayer->Active(false);
+			mPlayer->Visible(false);
 			// sets flag to start sequence over, increment level
 		}
 	}
@@ -161,9 +164,11 @@ void PlayScreen::Update()
 				StartNextLevel();
 				if (mCurrentLevel > 0)
 				{
-					mMaps[mCurrentLevel - 1]->LoadMap();
-					mFxMaps[mCurrentLevel - 1]->LoadMap();
+					mMaps[mCurrentLevel]->LoadMap();
+					mFxMaps[mCurrentLevel]->LoadMap();
 				}
+				mPlayer->Active(true);
+				mPlayer->Visible(true);
 			}
 		}
 	}
@@ -192,6 +197,12 @@ void PlayScreen::Render()
 	{
 		if (!mLevelStarted)
 		{
+			if (mLevelStartTimer == 0)
+			{
+				mCurrentLevel++;
+				mLevelNumber->Score(mCurrentLevel);
+				mHUD->SetCurrentScore(mCurrentLevel);
+			}
 			if (mLevelStartTimer > 0.0f && mLevelStartTimer < mLevelStartDelay)
 			{
 				mLevelLabel->Render();
@@ -201,12 +212,13 @@ void PlayScreen::Render()
 		if (mLevelStarted)
 		{
 			if (mCurrentLevel > 0)
-				mMaps[mCurrentLevel - 1]->Render();
+				mMaps[mCurrentLevel]->Render();
 			//mLevel->Render();
+			mPlayer->Active(true);
+			mPlayer->Visible(true);
 			mPlayer->Render();
 			if (mCurrentLevel > 0)
-				mFxMaps[mCurrentLevel - 1]->Render();
-			
+				mFxMaps[mCurrentLevel]->Render();
 		}
 		
 		mHUD->Render(); // draws HUD on top of map

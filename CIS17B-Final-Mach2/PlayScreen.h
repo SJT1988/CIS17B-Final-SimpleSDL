@@ -1,8 +1,10 @@
 #pragma once
 #include "AudioManager.h"
-#include "Level.h"
+//#include "Level.h"
 #include "GameEntity.h"
 #include "Map.h"
+#include "HUD.h"
+#include "Player.h"
 
 using namespace QuickSDL;
 
@@ -24,7 +26,7 @@ private:
 	Texture* mLevelLabel;
 	ScoreBoard* mLevelNumber;
 
-	Level* mLevel;
+	//Level* mLevel;
 	bool mGameStarted;
 	bool mLevelStarted;
 	int mCurrentLevel;
@@ -39,7 +41,6 @@ private:
 
 	void StartNextLevel();
 	void CreateMaps();
-
 
 public:
 	PlayScreen();

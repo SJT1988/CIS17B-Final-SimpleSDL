@@ -77,6 +77,10 @@ Player::Player()
 		mBullets[i]->Parent(this);
 		mBullets[i]->Pos() = VEC2_ZERO;
 	}
+
+	// Initilize Texture:
+
+	mPlayerTex = mAnimations[0];
 }
 
 Player::~Player()
