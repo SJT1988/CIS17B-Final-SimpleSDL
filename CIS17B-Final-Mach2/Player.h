@@ -4,6 +4,7 @@
 #include "AudioManager.h"
 #include "Bullet.h"
 #include <vector>
+#include "Collider.h"
 
 using namespace QuickSDL;
 
@@ -32,6 +33,11 @@ private:
 	float mMoveSpeed;
 	Vector2 mMoveBounds;
 	const float OFFSET = 16.0f;
+
+	//=================
+	// Collider
+
+	
 
 	//==================
 	// Bullet

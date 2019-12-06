@@ -9,7 +9,8 @@ class Map : public GameEntity
 {
 private:
 
-	std::vector<Texture*> mMapTiles;	
+	std::vector<Texture> mMapTiles;
+	//std::vector<Texture*> mMapTiles;	
 	std::string mTileSetPath;
 	std::string mMapFilePath;
 	

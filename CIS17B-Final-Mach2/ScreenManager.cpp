@@ -43,20 +43,19 @@ void ScreenManager::Update()
 	switch (mCurrentScreen)
 	{
 	case start:
-		
+
 		mStartScreen->Update();
 		if (mInput->KeyPressed(SDL_SCANCODE_RETURN))
 		{
-			
 			mCurrentScreen = play;
-			mStartScreen->~StartScreen();
-			mStartScreen->ResetAnimation();
+			if (mStartScreen) delete mStartScreen;
+			mStartScreen = new StartScreen();
+			//mStartScreen->ResetAnimation();
 			mPlayScreen->StartNewGame();
 		}
 		break;
 
 	case play:
-
 		mPlayScreen->Update();
 		if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE))
 		{
@@ -65,8 +64,10 @@ void ScreenManager::Update()
 				Mix_FadeOutMusic(500);
 				Mix_RewindMusic();
 			}
-			mStartScreen = new StartScreen();
+			
 			mCurrentScreen = start;
+			if (mPlayScreen) delete mPlayScreen;
+			mPlayScreen = new PlayScreen;
 		}
 		break;
 	}

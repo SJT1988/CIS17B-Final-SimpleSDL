@@ -14,6 +14,8 @@ Player::Player()
 
 	mScore = 0;
 	mLives = 1;
+
+
 	//========================
 	// initialize animations
 	AnimatedTexture* mAnim_IdleUp =

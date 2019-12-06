@@ -16,7 +16,7 @@ PlayScreen::PlayScreen()
 	mBeginLabel1->Parent(this);
 	mBeginLabel0->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.5f - 48));
 	mBeginLabel1->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.5f + 48));
-	
+
 	//==============
 	mLevelLabel = new Texture("LEVEL", "forgotmybazookaathome.ttf", 24, { 64,64,255 });
 	mLevelLabel->Parent(this);
@@ -27,7 +27,7 @@ PlayScreen::PlayScreen()
 	mLevelNumber->Parent(this);
 	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 123, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
 	//==============
-	
+
 	mPlayer = NULL;
 
 	// Map stuff
@@ -66,6 +66,12 @@ PlayScreen::~PlayScreen()
 	mLevelNumber = NULL;
 	//==============
 
+	for (Map* m : mMaps)
+	{
+		delete m;
+		m = NULL;
+	}
+	
 	for (Map* m : mFxMaps)
 	{
 		delete m;
@@ -153,8 +159,8 @@ void PlayScreen::Update()
 				StartNextLevel();
 				if (mCurrentLevel > 0)
 				{
-					mMaps[mCurrentLevel-1]->LoadMap();
-					mFxMaps[mCurrentLevel-1]->LoadMap();
+					mMaps[mCurrentLevel - 1]->LoadMap();
+					mFxMaps[mCurrentLevel - 1]->LoadMap();
 				}
 				mPlayer->Active(true);
 				mPlayer->Visible(true);
@@ -201,12 +207,12 @@ void PlayScreen::Render()
 		if (mLevelStarted)
 		{
 			if (mCurrentLevel > 0)
-				mMaps[mCurrentLevel-1]->Render();
+				mMaps[mCurrentLevel - 1]->Render();
 			mPlayer->Active(true);
 			mPlayer->Visible(true);
 			mPlayer->Render();
 			if (mCurrentLevel > 0)
-				mFxMaps[mCurrentLevel-1]->Render();
+				mFxMaps[mCurrentLevel - 1]->Render();
 		}
 		mHUD->Render();
 	}

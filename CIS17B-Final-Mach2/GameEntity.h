@@ -117,7 +117,7 @@ namespace QuickSDL {
 		GameEntity* Parent();
 
 		//---------------------------------------------------------------
-		//Translates the GameEntity's lcoal position by the given amount 
+		//Translates the GameEntity's local position by the given amount 
 		//---------------------------------------------------------------
 		void Translate(Vector2 vec);
 		//------------------------------------------------------

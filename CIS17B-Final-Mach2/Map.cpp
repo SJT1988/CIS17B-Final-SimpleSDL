@@ -11,7 +11,10 @@ Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY)
 
 Map::~Map()
 {
-	std::vector<Texture*>().swap(mMapTiles); // instant de-allocation!
+	
+	mMapTiles.clear();
+	mMapTiles.~vector();
+	// std::vector<Texture*>().swap(mMapTiles); // instant de-allocation!
 }
 
 // Load the .map tiles:
@@ -57,9 +60,7 @@ void Map::LoadColliders(std::string path, int sizeX, int sizeY)
 	char c;
 	std::fstream mapFile;
 	mapFile.open(path);
-
 	int srcX, srcY; // these don't seem to be FOR anything...
-
 	for (int y = 0; y < sizeY; y++)
 	{
 		for (int x = 0; x < sizeX; x++)
@@ -81,15 +82,22 @@ void Map::LoadColliders(std::string path, int sizeX, int sizeY)
 void Map::AddTile(int srcX, int srcY, int posX, int posY)
 {
 	// std::cout << srcX << " " << srcY << std::endl;
+
+	Texture texture = Texture(mTileSetPath, srcX, srcY, TILE_SIZE, TILE_SIZE);
+	mMapTiles.push_back(texture);
+	mMapTiles.back().Parent(this);
+	mMapTiles.back().Pos(Vector2(posX, posY));
+	/*
 	mMapTiles.push_back(new Texture(mTileSetPath, srcX, srcY, TILE_SIZE, TILE_SIZE));
 	mMapTiles.back()->Parent(this);
-	mMapTiles.back()->Pos( Vector2(posX, posY));
+	mMapTiles.back()->Pos(Vector2(posX, posY));
+	*/
 }
 
 void Map::Render()
 {
-	for (Texture* t : mMapTiles)
+	for (Texture t : mMapTiles)
 	{
-		t->Render();
+		t.Render();
 	}
 }
