@@ -106,7 +106,7 @@ Player::~Player()
 
 void Player::HandleMovement()
 {
-	// std::cout << mDirection << std::endl;
+	 std::cout << mDirection << std::endl;
 
 	// =========================
 	// Shoot
@@ -118,12 +118,16 @@ void Player::HandleMovement()
 		if (mInput->KeyReleased(SDL_SCANCODE_SPACE))
 			mPlayerTex->FrameReset();
 		*/
-		if (mDirection == -VEC2_UP)
+		if (mDirection == -VEC2_UP ||
+			mDirection == Vector2(-sqrt(2) / 2, -sqrt(2) / 2) ||
+			mDirection == Vector2(sqrt(2) / 2, -sqrt(2) / 2))
 		{
 			mPlayerTex = mAnimations[6];
 			return;
 		}
-		else if (mDirection == VEC2_UP)
+		else if (mDirection == VEC2_UP ||
+			mDirection == Vector2(-sqrt(2) / 2, sqrt(2) / 2) ||
+			mDirection == Vector2(sqrt(2) / 2, sqrt(2) / 2))
 		{
 			mPlayerTex = mAnimations[7];
 			return;
@@ -146,7 +150,7 @@ void Player::HandleMovement()
 	if ((mInput->KeyDown(SDL_SCANCODE_UP) || mInput->KeyDown(SDL_SCANCODE_W)) &&
 		(mInput->KeyDown(SDL_SCANCODE_LEFT) || mInput->KeyDown(SDL_SCANCODE_A)))
 	{
-		mDirection = -VEC2_UP;
+		mDirection = Vector2(-sqrt(2) / 2, -sqrt(2) / 2);
 		mPlayerTex = mAnimations[3];
 		mFlip = SDL_FLIP_NONE;
 		Translate(Vector2(-sqrt(2) / 2, -sqrt(2) / 2) * mMoveSpeed*mTimer->DeltaTime());
@@ -154,7 +158,7 @@ void Player::HandleMovement()
 	else if ((mInput->KeyDown(SDL_SCANCODE_UP) || mInput->KeyDown(SDL_SCANCODE_W)) &&
 		(mInput->KeyDown(SDL_SCANCODE_RIGHT) || mInput->KeyDown(SDL_SCANCODE_D)))
 	{
-		mDirection = -VEC2_UP;
+		mDirection = Vector2(sqrt(2) / 2, -sqrt(2) / 2);
 		mPlayerTex = mAnimations[3];
 		mFlip = SDL_FLIP_NONE;
 		Translate(Vector2(sqrt(2) / 2, -sqrt(2) / 2) * mMoveSpeed*mTimer->DeltaTime());
@@ -162,7 +166,7 @@ void Player::HandleMovement()
 	else if ((mInput->KeyDown(SDL_SCANCODE_DOWN) || mInput->KeyDown(SDL_SCANCODE_S)) &&
 		(mInput->KeyDown(SDL_SCANCODE_LEFT) || mInput->KeyDown(SDL_SCANCODE_A)))
 	{
-		mDirection = VEC2_UP;
+		mDirection = Vector2(-sqrt(2) / 2, sqrt(2) / 2);
 		mPlayerTex = mAnimations[4];
 		mFlip = SDL_FLIP_NONE;
 		Translate(Vector2(-sqrt(2) / 2, sqrt(2) / 2) * mMoveSpeed*mTimer->DeltaTime());
@@ -170,7 +174,7 @@ void Player::HandleMovement()
 	else if ((mInput->KeyDown(SDL_SCANCODE_DOWN) || mInput->KeyDown(SDL_SCANCODE_S)) &&
 		(mInput->KeyDown(SDL_SCANCODE_RIGHT) || mInput->KeyDown(SDL_SCANCODE_D)))
 	{
-		mDirection = VEC2_UP;
+		mDirection = Vector2(sqrt(2) / 2, sqrt(2) / 2);
 		mPlayerTex = mAnimations[4];
 		mFlip = SDL_FLIP_NONE;
 		Translate(Vector2(sqrt(2) / 2, sqrt(2) / 2) * mMoveSpeed*mTimer->DeltaTime());

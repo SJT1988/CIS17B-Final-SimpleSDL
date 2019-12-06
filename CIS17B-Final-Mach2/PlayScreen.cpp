@@ -104,7 +104,7 @@ void PlayScreen::StartNewGame()
 
 void PlayScreen::CreateMaps()
 {
-	const std::string path = "C:\\Users\\Spencer\\Documents\\GitHub\\CIS17B-Final-SimpleSDL\\CIS17B-Final-Mach2\\Debug\\Assets\\";
+	const std::string path = "Debug\\Assets\\";
 	mMaps[0] = new Map(mTileSetPath, path + "map00.map", 11, 11);
 	mFxMaps[0] = new Map(mTileSetPath, path + "mapFx00.map", 11, 11);
 

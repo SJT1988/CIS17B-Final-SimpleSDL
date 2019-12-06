@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "BoxCollider.h"
 
 Bullet::Bullet()
 {
@@ -8,6 +9,8 @@ Bullet::Bullet()
 	mTexture->Parent(this);
 	mTexture->Pos(VEC2_ZERO);
 	mDirection = VEC2_ZERO;
+
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 }
 
 Bullet::~Bullet()
@@ -16,8 +19,6 @@ Bullet::~Bullet()
 
 	delete mTexture;
 	mTexture = NULL;
-	
-	
 }
 
 void Bullet::Fire()
@@ -60,5 +61,6 @@ void Bullet::Render()
 	if (Active())
 	{
 		mTexture->Render();
+		PhysicsEntity::Render();
 	}
 }

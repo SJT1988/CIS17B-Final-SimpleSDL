@@ -1,2 +1,14 @@
-﻿  BoxCollider.cpp
+﻿  Player.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(122): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(123): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(129): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(130): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(153): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(156): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(161): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(164): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(169): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(172): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(177): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(180): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe

@@ -86,10 +86,25 @@ namespace QuickSDL {
 
 		return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
 	}
-
+	// Vector2 * float
 	inline Vector2 operator *(const Vector2& lhs, const float& rhs) {
 
 		return Vector2(lhs.x * rhs, lhs.y * rhs);
+	}
+	// float * Vector2
+	inline Vector2 operator *(const float& lhs, const Vector2& rhs) {
+
+		return Vector2(lhs * rhs.x, lhs * rhs.y);
+	}
+	// Vector2 / float
+	inline Vector2 operator /(const Vector2& lhs, const float& rhs) {
+
+		return Vector2(lhs.x / rhs, lhs.y / rhs);
+	}
+	// float / Vector2
+	inline Vector2 operator /(const float& lhs, const Vector2& rhs) {
+
+		return Vector2(lhs / rhs.x, lhs / rhs.y);
 	}
 
 	inline std::ostream& operator << (std::ostream& stream, const Vector2& vec)

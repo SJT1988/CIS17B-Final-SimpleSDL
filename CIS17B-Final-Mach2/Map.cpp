@@ -33,10 +33,10 @@ void Map::LoadMap()
 		for (int x = 0; x < mSizeX; x++)
 		{
 			mapFile.get(c);
-			std::cout << c << " "; // debug
+			//std::cout << c << " "; // debug
 			srcY = atoi(&c)*TILE_SIZE; // atoi := character string-to-int
 			mapFile.get(c); // debug
-			std::cout << c << std::endl;
+			//std::cout << c << std::endl;
 			srcX = atoi(&c)*TILE_SIZE;
 			AddTile(srcX, srcY, x * (TILE_SIZE), y * (TILE_SIZE));
 			mapFile.ignore(); //skip the comma

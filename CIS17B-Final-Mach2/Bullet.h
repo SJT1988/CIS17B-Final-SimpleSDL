@@ -1,10 +1,10 @@
 #pragma once
-#include "Texture.h"
+#include "PhysicsEntity.h"
 #include "Timer.h"
 
 using namespace QuickSDL;
 
-class Bullet : public GameEntity
+class Bullet : public PhysicsEntity
 {
 private:
 	Timer* mTimer;

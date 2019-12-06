@@ -4,7 +4,6 @@
 #include "AudioManager.h"
 #include "Bullet.h"
 #include <vector>
-#include "Collider.h"
 
 using namespace QuickSDL;
 
