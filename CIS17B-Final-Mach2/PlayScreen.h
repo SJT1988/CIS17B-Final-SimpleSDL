@@ -33,6 +33,14 @@ private:
 	int mCurrentLevel;
 
 	Player* mPlayer;
+	/* nudges player LEFT and UP (user's POV) so that he is centered about the provided coordinates.
+	   For example, when the player is parented to a map object, mPlayer->Pos(VEC2_ZERO) places
+	   upper-left corner of his sprite at the map's upper-left corner--but the player's center is
+	   to the right 32px and down 32px; to correct this, we OFFSET his position by adding the following
+	   vector:	
+	*/
+	//const Vector2 PLAYER_OFFSET = Vector2(-32.0f, -32.0f);
+	Vector2 mStartPos[10];
 
 	const std::string mDirectory = "Debug\\Assets\\";
 	std::string mTileSetPath;

@@ -30,8 +30,10 @@ private:
 	AnimatedTexture* mPlayerTex;
 
 	float mMoveSpeed;
-	Vector2 mMoveBounds;
-	const float OFFSET = 16.0f;
+
+	// moved next 2 lines to PlayScreen.h:
+	// Vector2 mMoveBounds;
+	// const float OFFSET = 16.0f;
 
 	//=================
 	// Collider
@@ -63,7 +65,7 @@ public:
 	int GetLives();
 
 	void AddScore(int change);
-	void WasHit();
+	//void WasHit();
 
 	void Update();
 	void Render();

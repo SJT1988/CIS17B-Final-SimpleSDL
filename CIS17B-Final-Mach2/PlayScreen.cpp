@@ -20,31 +20,27 @@ PlayScreen::PlayScreen()
 	//==============
 	mLevelLabel = new Texture("LEVEL", "forgotmybazookaathome.ttf", 24, { 64,64,255 });
 	mLevelLabel->Parent(this);
-	mLevelLabel->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f - 13, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
+	mLevelLabel->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f - 13, Graphics::Instance()->SCREEN_HEIGHT * 0.5f));
 
 	mLevelNumber = new ScoreBoard({ 64, 64, 255 });
 	mLevelNumber->Score(mCurrentLevel);
 	mLevelNumber->Parent(this);
-	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH*0.5f + 123, Graphics::Instance()->SCREEN_HEIGHT*0.5f));
+	mLevelNumber->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f + 123, Graphics::Instance()->SCREEN_HEIGHT * 0.5f));
 	//==============
 
 	mPlayer = NULL;
 
 	// Map stuff
-	mTileSetPath = "tilesetDarker.png";
+	mTileSetPath = "tileset2.png";
 	CreateMaps();
 
 	for (Map* m : mMaps)
-		m->Pos(Vector2((Graphics::Instance()->SCREEN_WIDTH - m->mSizeX * m->TILE_SIZE)*0.5f,
-		(Graphics::Instance()->SCREEN_HEIGHT - m->mSizeY * m->TILE_SIZE)*0.5f));
+		m->Pos(Vector2((Graphics::Instance()->SCREEN_WIDTH - m->mSizeX * m->TILE_SIZE) * 0.5f,
+		(Graphics::Instance()->SCREEN_HEIGHT - m->mSizeY * m->TILE_SIZE) * 0.5f + 32.0f));
 
 	for (Map* fx : mFxMaps)
-		fx->Pos(Vector2((Graphics::Instance()->SCREEN_WIDTH - fx->mSizeX * fx->TILE_SIZE)*0.5f,
-		(Graphics::Instance()->SCREEN_HEIGHT - fx->mSizeY * fx->TILE_SIZE)*0.5f));
-
-	for (Map* col : mColliderMaps)
-		col->Pos(Vector2((Graphics::Instance()->SCREEN_WIDTH - col->mSizeX * col->TILE_SIZE)*0.5f,
-		(Graphics::Instance()->SCREEN_HEIGHT - col->mSizeY * col->TILE_SIZE)*0.5f));
+		fx->Pos(Vector2((Graphics::Instance()->SCREEN_WIDTH - fx->mSizeX * fx->TILE_SIZE) * 0.5f,
+		(Graphics::Instance()->SCREEN_HEIGHT - fx->mSizeY * fx->TILE_SIZE) * 0.5f + 32.0f));
 }
 
 PlayScreen::~PlayScreen()
@@ -75,14 +71,8 @@ PlayScreen::~PlayScreen()
 		delete m;
 		m = NULL;
 	}
-	
-	for (Map* m : mFxMaps)
-	{
-		delete m;
-		m = NULL;
-	}
 
-	for (Map* m : mColliderMaps)
+	for (Map* m : mFxMaps)
 	{
 		delete m;
 		m = NULL;
@@ -97,6 +87,9 @@ PlayScreen::~PlayScreen()
 
 void PlayScreen::StartNextLevel()
 {
+	mPlayer->Parent(mMaps[mCurrentLevel - 1]);
+	mPlayer->Pos(VEC2_ZERO);
+	//std::cout << mPlayer->Pos(local) << std::endl;
 	mLevelStartTimer = 0.0f;
 	mLevelStarted = true;
 	if (mCurrentLevel == 1)
@@ -105,25 +98,45 @@ void PlayScreen::StartNextLevel()
 	{
 		mMaps[mCurrentLevel - 1]->LoadMap();
 		mFxMaps[mCurrentLevel - 1]->LoadMap();
-		mColliderMaps[mCurrentLevel - 1]->LoadColliders(mDirectory + mColliderMaps[mCurrentLevel - 1]->mMapFilePath);
+		mPlayer->Pos(mStartPos[mCurrentLevel-1]);
+		//std::cout << mPlayer->Pos(local) << std::endl;
 	}
 
-	// Create monster
-	mMonsters.emplace_back(new Monster(80.0f, 120.0f));
+
+	// Create monsters:
+
+	mMonsters.emplace_back(new Monster(0.0f, 160.0f));
 	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
 	mMonsters.back()->Pos(VEC2_ZERO);
 
-	mMonsters.emplace_back(new Monster(120.0f, 160.0f));
+	/*
+	mMonsters.emplace_back(new Monster(10.0f, 40.0f));
 	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(Vector2(16.0f,16.0f));
+	mMonsters.back()->Pos(VEC2_ZERO);
 
-	mMonsters.emplace_back(new Monster(60.0f, 100.0f));
+	mMonsters.emplace_back(new Monster(40.0f, 70.0f));
 	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(Vector2(32.0f,32.0f));
+	mMonsters.back()->Pos(Vector2(16.0f, 16.0f));
 
-	mMonsters.emplace_back(new Monster(0.0f, 0.0f));
+	mMonsters.emplace_back(new Monster(70.0f, 100.0f));
+	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
+	mMonsters.back()->Pos(Vector2(32.0f, 32.0f));
+
+	mMonsters.emplace_back(new Monster(100.0f, 130.0f));
 	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
 	mMonsters.back()->Pos(Vector2(64.0f, 64.0f));
+
+	mMonsters.emplace_back(new Monster(130.0f, 160.0f));
+	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
+	mMonsters.back()->Pos(Vector2(96.0f, 96.0f));
+	*/
+
+	mPlayer->Active(true);
+	mPlayer->Visible(true);
+	for (Monster* m : mMonsters)
+	{
+		m->Active(true);
+	}
 }
 
 void PlayScreen::StartNewGame()
@@ -143,49 +156,59 @@ void PlayScreen::StartNewGame()
 
 void PlayScreen::CreateMaps()
 {
-	mMaps[0] = new Map(mTileSetPath, mDirectory + "map00.map", 11, 11);
-	mFxMaps[0] = new Map(mTileSetPath, mDirectory + "mapFx00.map", 11, 11);
-	mColliderMaps[0] = new Map(mTileSetPath, mDirectory + "colliders00.map", 11, 11);
+	const std::string path = "Debug\\Assets\\";
+	mMaps[0] = new Map(mTileSetPath, path + "map00.map", 15, 15);
+	mFxMaps[0] = new Map(mTileSetPath, path + "mapFx00.map", 11, 11);
+	mStartPos[0] = Vector2(32.0f, 32.0f);
 
-	mMaps[1] = new Map(mTileSetPath, mDirectory + "map01.map", 11, 11);
-	mFxMaps[1] = new Map(mTileSetPath, mDirectory + "mapFx01.map", 11, 11);
-	mColliderMaps[1] = new Map(mTileSetPath, mDirectory + "colliders01.map", 11, 11);
+	mMaps[1] = new Map(mTileSetPath, path + "map01.map", 21, 21);
+	mFxMaps[1] = new Map(mTileSetPath, path + "mapFx01.map", 11, 11);
+	mStartPos[1] = Vector2(416, 416);
 
-	mMaps[2] = new Map(mTileSetPath, mDirectory + "map02.map", 11, 11);
-	mFxMaps[2] = new Map(mTileSetPath, mDirectory + "mapFx02.map", 11, 11);
-	mColliderMaps[2] = new Map(mTileSetPath, mDirectory + "colliders02.map", 11, 11);
+	mMaps[2] = new Map(mTileSetPath, path + "map02.map", 31, 11);
+	mFxMaps[2] = new Map(mTileSetPath, path + "mapFx02.map", 11, 11);
+	mStartPos[2] = Vector2(928, 288);
 
-	mMaps[3] = new Map(mTileSetPath, mDirectory + "map03.map", 11, 11);
-	mFxMaps[3] = new Map(mTileSetPath, mDirectory + "mapFx03.map", 11, 11);
-	mColliderMaps[3] = new Map(mTileSetPath, mDirectory + "colliders03.map", 11, 11);
 
-	mMaps[4] = new Map(mTileSetPath, mDirectory + "map04.map", 11, 11);
-	mFxMaps[4] = new Map(mTileSetPath, mDirectory + "mapFx04.map", 11, 11);
-	mColliderMaps[4] = new Map(mTileSetPath, mDirectory + "colliders04.map", 11, 11);
+	mMaps[3] = new Map(mTileSetPath, path + "map03.map", 31, 15);
+	mFxMaps[3] = new Map(mTileSetPath, path + "mapFx03.map", 11, 11);
+	mStartPos[3] = Vector2(32, 32);
 
-	mMaps[5] = new Map(mTileSetPath, mDirectory + "map05.map", 11, 11);
-	mFxMaps[5] = new Map(mTileSetPath, mDirectory + "mapFx05.map", 11, 11);
-	mColliderMaps[5] = new Map(mTileSetPath, mDirectory + "colliders05.map", 11, 11);
 
-	mMaps[6] = new Map(mTileSetPath, mDirectory + "map06.map", 11, 11);
-	mFxMaps[6] = new Map(mTileSetPath, mDirectory + "mapFx06.map", 11, 11);
-	mColliderMaps[6] = new Map(mTileSetPath, mDirectory + "colliders06.map", 11, 11);
+	mMaps[4] = new Map(mTileSetPath, path + "map04.map", 21, 21);
+	mFxMaps[4] = new Map(mTileSetPath, path + "mapFx04.map", 11, 11);
+	mStartPos[4] = Vector2(608, 608); //Vector2(32, 96);
 
-	mMaps[7] = new Map(mTileSetPath, mDirectory + "map07.map", 11, 11);
-	mFxMaps[7] = new Map(mTileSetPath, mDirectory + "mapFx07.map", 11, 11);
-	mColliderMaps[7] = new Map(mTileSetPath, mDirectory + "colliders07.map", 11, 11);
 
-	mMaps[8] = new Map(mTileSetPath, mDirectory + "map08.map", 11, 11);
-	mFxMaps[8] = new Map(mTileSetPath, mDirectory + "mapFx08.map", 11, 11);
-	mColliderMaps[8] = new Map(mTileSetPath, mDirectory + "colliders08.map", 11, 11);
+	mMaps[5] = new Map(mTileSetPath, path + "map05.map", 39, 19);
+	mFxMaps[5] = new Map(mTileSetPath, path + "mapFx05.map", 11, 11);
+	mStartPos[5] = Vector2(96, 32);
 
-	mMaps[9] = new Map(mTileSetPath, mDirectory + "map09.map", 11, 11);
-	mFxMaps[9] = new Map(mTileSetPath, mDirectory + "mapFx09.map", 11, 11);
-	mColliderMaps[9] = new Map(mTileSetPath, mDirectory + "colliders09.map", 11, 11);
+
+	mMaps[6] = new Map(mTileSetPath, path + "map06.map", 31, 21);
+	mFxMaps[6] = new Map(mTileSetPath, path + "mapFx06.map", 11, 11);
+	mStartPos[6] = Vector2(930, 545); // Vector2(32, 32);
+
+
+	mMaps[7] = new Map(mTileSetPath, path + "map07.map", 39, 21);
+	mFxMaps[7] = new Map(mTileSetPath, path + "mapFx07.map", 11, 11);
+	mStartPos[7] = Vector2(32, 32);
+
+
+	mMaps[8] = new Map(mTileSetPath, path + "map08.map", 39, 21);
+	mFxMaps[8] = new Map(mTileSetPath, path + "mapFx08.map", 11, 11);
+	mStartPos[8] = Vector2(96, 224);
+
+
+	mMaps[9] = new Map(mTileSetPath, path + "map09.map", 39, 21);
+	mFxMaps[9] = new Map(mTileSetPath, path + "mapFx09.map", 11, 11);
+	mStartPos[9] = Vector2(1184, 32);
+
 }
 
 void PlayScreen::Update()
 {
+	 std::cout << mPlayer->Pos(local) << std::endl;
 	if (mGameStarted && mLevelStarted)
 	{
 		mPlayer->Update();
@@ -195,16 +218,24 @@ void PlayScreen::Update()
 			m->Move(mPlayer->Pos());
 		}
 
+
 		if (mInput->KeyPressed(SDL_SCANCODE_N))
 		{
 			mLevelStarted = false;
 			mPlayer->Active(false);
 			mPlayer->Visible(false);
+			
+			for (Monster* m : mMonsters)
+			{
+				m->Active(false);
+			}
+			/*
 			for (Monster* m : mMonsters)
 			{
 				delete m;
 				m = NULL;
 			}
+			*/
 		}
 	}
 	else if (mGameStarted)
@@ -212,11 +243,10 @@ void PlayScreen::Update()
 		if (!mLevelStarted)
 		{
 			mLevelStartTimer += mTimer->DeltaTime();
+			// this means level is starting:
 			if (mLevelStartTimer >= mLevelStartDelay)
 			{
 				StartNextLevel();
-				mPlayer->Active(true);
-				mPlayer->Visible(true);
 			}
 		}
 	}
@@ -269,10 +299,7 @@ void PlayScreen::Render()
 				m->Render();
 			}
 			if (mCurrentLevel > 0)
-			{
 				mFxMaps[mCurrentLevel - 1]->Render();
-				mColliderMaps[mCurrentLevel - 1]->Render();
-			}
 		}
 		mHUD->Render();
 	}

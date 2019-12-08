@@ -29,9 +29,9 @@ namespace QuickSDL {
 		//The renderer used to render all textures
 		SDL_Renderer* mRenderer;
 		//The Width of the game's window
-		const int SCREEN_WIDTH = 1024;
+		const int SCREEN_WIDTH = 1366;
 		//The Height of the game's window
-		const int SCREEN_HEIGHT = 576;
+		const int SCREEN_HEIGHT = 768;
 		//The title of the game's window
 		const char* WINDOW_TITLE = "CIS17B-Final";
 

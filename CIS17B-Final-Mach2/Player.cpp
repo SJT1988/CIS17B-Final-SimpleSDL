@@ -15,7 +15,6 @@ Player::Player()
 	mScore = 0;
 	mLives = 1;
 
-
 	//========================
 	// initialize animations
 	AnimatedTexture* mAnim_IdleUp =
@@ -66,9 +65,11 @@ Player::Player()
 	}
 
 	mMoveSpeed = 160.0f;
+	
+	// Moving next line to PlayScreen.cpp:
 	// The player's body occupies a 32x32 pixel region, and his reference is his center, so 32/2 = 16
 	//provides the correct offset for the bounds.
-	mMoveBounds = Vector2(Graphics::Instance()->SCREEN_WIDTH - OFFSET, Graphics::Instance()->SCREEN_HEIGHT - OFFSET);
+	// mMoveBounds = Vector2(Graphics::Instance()->SCREEN_WIDTH - OFFSET, Graphics::Instance()->SCREEN_HEIGHT - OFFSET);
 
 	//====================
 	// Bullets
@@ -80,6 +81,7 @@ Player::Player()
 		mBullets[i]->Pos() = VEC2_ZERO;
 	}
 
+	//======================
 	// Initilize Texture:
 
 	mPlayerTex = mAnimations[0];
@@ -106,7 +108,7 @@ Player::~Player()
 
 void Player::HandleMovement()
 {
-	 std::cout << mDirection << std::endl;
+	// std::cout << mDirection << std::endl;
 
 	// =========================
 	// Shoot
@@ -238,7 +240,8 @@ void Player::HandleMovement()
 	}
 	
 	// ====================
-	// Set Position
+	// Handle error bounds: This got moved to PlayScreen.cpp
+	/*
 	Vector2 pos = Pos(local);
 	if (pos.x < OFFSET) pos.x = OFFSET;
 	else if (pos.x > mMoveBounds.x) pos.x = mMoveBounds.x;
@@ -246,6 +249,7 @@ void Player::HandleMovement()
 	else if (pos.y > mMoveBounds.y) pos.y = mMoveBounds.y;
 
 	Pos(pos);
+	*/
 }
 
 void Player::Visible(bool visible)

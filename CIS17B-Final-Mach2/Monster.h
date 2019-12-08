@@ -7,6 +7,9 @@ class Monster:public GameEntity
 {
 private:
 	Timer* mTimer;
+
+	float mSpeedLo;
+	float mSpeedHi;
 public:
 
 	AnimatedTexture* mTexture;
