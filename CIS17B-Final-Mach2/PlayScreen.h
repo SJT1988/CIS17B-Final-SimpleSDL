@@ -5,6 +5,7 @@
 #include "Map.h"
 #include "HUD.h"
 #include "Player.h"
+#include "Monster.h"
 
 using namespace QuickSDL;
 
@@ -38,6 +39,9 @@ private:
 	Map* mMaps[10];
 	Map* mFxMaps[10];
 	Map* mColliderMaps[10];
+
+	// monsters
+	std::vector<Monster*>mMonsters;
 
 private:
 

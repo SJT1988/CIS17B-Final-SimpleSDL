@@ -1,11 +1,2 @@
-﻿  GameManager.cpp
-  main.cpp
-  Map.cpp
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(81): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(72): warning C4101: 'srcY': unreferenced local variable
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(72): warning C4101: 'srcX': unreferenced local variable
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  PlayScreen.cpp
-  ScreenManager.cpp
-  Generating Code...
+﻿  PlayScreen.cpp
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe

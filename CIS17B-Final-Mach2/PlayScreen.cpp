@@ -87,6 +87,12 @@ PlayScreen::~PlayScreen()
 		delete m;
 		m = NULL;
 	}
+
+	for (Monster* m : mMonsters)
+	{
+		delete m;
+		m = NULL;
+	}
 }
 
 void PlayScreen::StartNextLevel()
@@ -101,6 +107,23 @@ void PlayScreen::StartNextLevel()
 		mFxMaps[mCurrentLevel - 1]->LoadMap();
 		mColliderMaps[mCurrentLevel - 1]->LoadColliders(mDirectory + mColliderMaps[mCurrentLevel - 1]->mMapFilePath);
 	}
+
+	// Create monster
+	mMonsters.emplace_back(new Monster(80.0f, 120.0f));
+	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
+	mMonsters.back()->Pos(VEC2_ZERO);
+
+	mMonsters.emplace_back(new Monster(120.0f, 160.0f));
+	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
+	mMonsters.back()->Pos(Vector2(16.0f,16.0f));
+
+	mMonsters.emplace_back(new Monster(60.0f, 100.0f));
+	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
+	mMonsters.back()->Pos(Vector2(32.0f,32.0f));
+
+	mMonsters.emplace_back(new Monster(0.0f, 0.0f));
+	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
+	mMonsters.back()->Pos(Vector2(64.0f, 64.0f));
 }
 
 void PlayScreen::StartNewGame()
@@ -123,7 +146,6 @@ void PlayScreen::CreateMaps()
 	mMaps[0] = new Map(mTileSetPath, mDirectory + "map00.map", 11, 11);
 	mFxMaps[0] = new Map(mTileSetPath, mDirectory + "mapFx00.map", 11, 11);
 	mColliderMaps[0] = new Map(mTileSetPath, mDirectory + "colliders00.map", 11, 11);
-	
 
 	mMaps[1] = new Map(mTileSetPath, mDirectory + "map01.map", 11, 11);
 	mFxMaps[1] = new Map(mTileSetPath, mDirectory + "mapFx01.map", 11, 11);
@@ -167,12 +189,22 @@ void PlayScreen::Update()
 	if (mGameStarted && mLevelStarted)
 	{
 		mPlayer->Update();
+		for (Monster* m : mMonsters)
+		{
+			m->Update();
+			m->Move(mPlayer->Pos());
+		}
 
 		if (mInput->KeyPressed(SDL_SCANCODE_N))
 		{
 			mLevelStarted = false;
 			mPlayer->Active(false);
 			mPlayer->Visible(false);
+			for (Monster* m : mMonsters)
+			{
+				delete m;
+				m = NULL;
+			}
 		}
 	}
 	else if (mGameStarted)
@@ -232,6 +264,10 @@ void PlayScreen::Render()
 			mPlayer->Active(true);
 			mPlayer->Visible(true);
 			mPlayer->Render();
+			for (Monster* m : mMonsters)
+			{
+				m->Render();
+			}
 			if (mCurrentLevel > 0)
 			{
 				mFxMaps[mCurrentLevel - 1]->Render();

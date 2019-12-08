@@ -168,6 +168,13 @@ namespace QuickSDL {
 		return start + dir * time;
 	}
 
+	inline float RandomFloat(float a, float b) {
+		float random = ((float)rand()) / (float)RAND_MAX;
+		float diff = b - a;
+		float r = random * diff;
+		return a + r;
+	}
+
 	const Vector2 VEC2_ZERO = { 0.0f, 0.0f };
 	const Vector2 VEC2_ONE = { 1.0f, 1.0f };
 	const Vector2 VEC2_UP = { 0.0f, 1.0f };

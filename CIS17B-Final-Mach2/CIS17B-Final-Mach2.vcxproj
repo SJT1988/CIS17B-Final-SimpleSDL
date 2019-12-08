@@ -140,6 +140,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="PhysicsEntity.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScreen.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="PhysicsEntity.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScreen.cpp" />

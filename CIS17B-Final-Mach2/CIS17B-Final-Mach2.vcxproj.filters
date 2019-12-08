@@ -102,6 +102,9 @@
     <ClInclude Include="BoxCollider.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -166,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="BoxCollider.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
