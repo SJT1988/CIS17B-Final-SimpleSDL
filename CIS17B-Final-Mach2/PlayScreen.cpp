@@ -104,7 +104,10 @@ void PlayScreen::StartNextLevel()
 
 
 	// Create monsters:
-
+	if (!mMonsters.empty())
+	{
+		mMonsters.clear();
+	}
 	mMonsters.emplace_back(new Monster(0.0f, 160.0f));
 	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
 	mMonsters.back()->Pos(VEC2_ZERO);
@@ -136,6 +139,16 @@ void PlayScreen::StartNextLevel()
 	for (Monster* m : mMonsters)
 	{
 		m->Active(true);
+	}
+
+	// delete unneeded maps:
+	if (mCurrentLevel > 1)
+	{
+		delete mMaps[mCurrentLevel - 2];
+		mMaps[mCurrentLevel - 2] = NULL;
+
+		delete mFxMaps[mCurrentLevel - 2];
+		mFxMaps[mCurrentLevel - 2] = NULL;
 	}
 }
 
