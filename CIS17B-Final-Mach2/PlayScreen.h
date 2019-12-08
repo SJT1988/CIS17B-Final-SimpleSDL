@@ -40,6 +40,10 @@ private:
 	   vector:	
 	*/
 	//const Vector2 PLAYER_OFFSET = Vector2(-32.0f, -32.0f);
+	
+	//=====================
+	// Map stuff
+
 	Vector2 mStartPos[10];
 
 	const std::string mDirectory = "Debug\\Assets\\";

@@ -13,6 +13,7 @@ private:
 	std::vector<Texture> mMapTiles;
 	std::vector<Collider*> mMapColliders;
 	std::string mTileSetPath;
+	int mMapIndex;
 	
 	
 public:
@@ -23,7 +24,7 @@ public:
 	std::string mMapFilePath;
 
 public:
-	Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY);
+	Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY, int mapIndex = 0);
 	~Map();
 
 	void LoadMap();

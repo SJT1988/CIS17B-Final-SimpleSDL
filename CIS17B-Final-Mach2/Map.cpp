@@ -2,17 +2,23 @@
 #include <fstream>
 #include <iostream>
 #include "BoxCollider.h"
+//#include <regex>
 
-Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY)
+Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY, int mapIndex)
 {
 	mTileSetPath = tileSetPath;
 	mMapFilePath = mapFilePath;
 	mSizeX = sizeX;
 	mSizeY = sizeY;
+	mMapIndex = mapIndex;
 }
 
 Map::~Map()
 {
+	for (Texture t : mMapTiles)
+	{
+		t.~Texture();
+	}
 	mMapTiles.clear();
 	mMapTiles.~vector();
 	// std::vector<Texture*>().swap(mMapTiles); // instant de-allocation!
@@ -56,11 +62,7 @@ void Map::LoadMap()
 }
 
 
-/*
-TODO: This can still be refactored because right now we need to pass a specific Map object,
-to run this function, but the tileset (.png) associated with it is worthless there; we only
-need it here to initialize "scaledSize", which should be set for every map in the game.
-*/
+
 
 // TODO
 
@@ -103,9 +105,23 @@ void Map::AddTile(int srcX, int srcY, int posX, int posY)
 	// std::cout << srcX << " " << srcY << std::endl;
 
 	Texture texture = Texture(mTileSetPath, srcX, srcY, TILE_SIZE, TILE_SIZE);
+
+	SDL_SetTextureColorMod(texture.mTex, 255, 255, 255);
+	// This part "darkens" the map each level:
+	// string ends in "map##.map"
+	/*
+	if (std::regex_match(mMapFilePath, std::regex(".*(map)[0-9]{2}(\.)(map)$")) && mMapIndex != 0)
+	{
+		std::cout << "darken" << std::endl;
+		int amount = 255 * (1 - mMapIndex * 0.05f);
+		SDL_SetTextureColorMod(texture.mTex, amount, amount, amount);
+	}
+	*/
 	mMapTiles.push_back(texture);
 	mMapTiles.back().Parent(this);
 	mMapTiles.back().Pos(Vector2(posX, posY));
+	
+
 	/*
 	mMapTiles.push_back(new Texture(mTileSetPath, srcX, srcY, TILE_SIZE, TILE_SIZE));
 	mMapTiles.back()->Parent(this);

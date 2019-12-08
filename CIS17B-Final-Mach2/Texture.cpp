@@ -77,7 +77,6 @@ namespace QuickSDL {
 	}
 
 	Texture::~Texture() {
-
 		mTex = NULL;
 		mGraphics = NULL;
 	}
