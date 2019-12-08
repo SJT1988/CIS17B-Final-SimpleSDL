@@ -273,8 +273,6 @@ void Player::AddScore(int change)
 	mScore += change;
 }
 
-// oh shit, I am going to have to retrofit this...
-
 void Player::Update()
 {
 	if (Active())

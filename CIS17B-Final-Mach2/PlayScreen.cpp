@@ -41,6 +41,10 @@ PlayScreen::PlayScreen()
 	for (Map* fx : mFxMaps)
 		fx->Pos(Vector2((Graphics::Instance()->SCREEN_WIDTH - fx->mSizeX * fx->TILE_SIZE)*0.5f,
 		(Graphics::Instance()->SCREEN_HEIGHT - fx->mSizeY * fx->TILE_SIZE)*0.5f));
+
+	for (Map* col : mColliderMaps)
+		col->Pos(Vector2((Graphics::Instance()->SCREEN_WIDTH - col->mSizeX * col->TILE_SIZE)*0.5f,
+		(Graphics::Instance()->SCREEN_HEIGHT - col->mSizeY * col->TILE_SIZE)*0.5f));
 }
 
 PlayScreen::~PlayScreen()
@@ -77,6 +81,12 @@ PlayScreen::~PlayScreen()
 		delete m;
 		m = NULL;
 	}
+
+	for (Map* m : mColliderMaps)
+	{
+		delete m;
+		m = NULL;
+	}
 }
 
 void PlayScreen::StartNextLevel()
@@ -85,6 +95,12 @@ void PlayScreen::StartNextLevel()
 	mLevelStarted = true;
 	if (mCurrentLevel == 1)
 		mAudio->PlayMusic("SMRPG_BarrelVocano_LH.wav", -1);
+	if (mCurrentLevel > 0)
+	{
+		mMaps[mCurrentLevel - 1]->LoadMap();
+		mFxMaps[mCurrentLevel - 1]->LoadMap();
+		mColliderMaps[mCurrentLevel - 1]->LoadColliders(mDirectory + mColliderMaps[mCurrentLevel - 1]->mMapFilePath);
+	}
 }
 
 void PlayScreen::StartNewGame()
@@ -104,36 +120,46 @@ void PlayScreen::StartNewGame()
 
 void PlayScreen::CreateMaps()
 {
-	const std::string path = "Debug\\Assets\\";
-	mMaps[0] = new Map(mTileSetPath, path + "map00.map", 11, 11);
-	mFxMaps[0] = new Map(mTileSetPath, path + "mapFx00.map", 11, 11);
+	mMaps[0] = new Map(mTileSetPath, mDirectory + "map00.map", 11, 11);
+	mFxMaps[0] = new Map(mTileSetPath, mDirectory + "mapFx00.map", 11, 11);
+	mColliderMaps[0] = new Map(mTileSetPath, mDirectory + "colliders00.map", 11, 11);
+	
 
-	mMaps[1] = new Map(mTileSetPath, path + "map01.map", 11, 11);
-	mFxMaps[1] = new Map(mTileSetPath, path + "mapFx01.map", 11, 11);
+	mMaps[1] = new Map(mTileSetPath, mDirectory + "map01.map", 11, 11);
+	mFxMaps[1] = new Map(mTileSetPath, mDirectory + "mapFx01.map", 11, 11);
+	mColliderMaps[1] = new Map(mTileSetPath, mDirectory + "colliders01.map", 11, 11);
 
-	mMaps[2] = new Map(mTileSetPath, path + "map02.map", 11, 11);
-	mFxMaps[2] = new Map(mTileSetPath, path + "mapFx02.map", 11, 11);
+	mMaps[2] = new Map(mTileSetPath, mDirectory + "map02.map", 11, 11);
+	mFxMaps[2] = new Map(mTileSetPath, mDirectory + "mapFx02.map", 11, 11);
+	mColliderMaps[2] = new Map(mTileSetPath, mDirectory + "colliders02.map", 11, 11);
 
-	mMaps[3] = new Map(mTileSetPath, path + "map03.map", 11, 11);
-	mFxMaps[3] = new Map(mTileSetPath, path + "mapFx03.map", 11, 11);
+	mMaps[3] = new Map(mTileSetPath, mDirectory + "map03.map", 11, 11);
+	mFxMaps[3] = new Map(mTileSetPath, mDirectory + "mapFx03.map", 11, 11);
+	mColliderMaps[3] = new Map(mTileSetPath, mDirectory + "colliders03.map", 11, 11);
 
-	mMaps[4] = new Map(mTileSetPath, path + "map04.map", 11, 11);
-	mFxMaps[4] = new Map(mTileSetPath, path + "mapFx04.map", 11, 11);
+	mMaps[4] = new Map(mTileSetPath, mDirectory + "map04.map", 11, 11);
+	mFxMaps[4] = new Map(mTileSetPath, mDirectory + "mapFx04.map", 11, 11);
+	mColliderMaps[4] = new Map(mTileSetPath, mDirectory + "colliders04.map", 11, 11);
 
-	mMaps[5] = new Map(mTileSetPath, path + "map05.map", 11, 11);
-	mFxMaps[5] = new Map(mTileSetPath, path + "mapFx05.map", 11, 11);
+	mMaps[5] = new Map(mTileSetPath, mDirectory + "map05.map", 11, 11);
+	mFxMaps[5] = new Map(mTileSetPath, mDirectory + "mapFx05.map", 11, 11);
+	mColliderMaps[5] = new Map(mTileSetPath, mDirectory + "colliders05.map", 11, 11);
 
-	mMaps[6] = new Map(mTileSetPath, path + "map06.map", 11, 11);
-	mFxMaps[6] = new Map(mTileSetPath, path + "mapFx06.map", 11, 11);
+	mMaps[6] = new Map(mTileSetPath, mDirectory + "map06.map", 11, 11);
+	mFxMaps[6] = new Map(mTileSetPath, mDirectory + "mapFx06.map", 11, 11);
+	mColliderMaps[6] = new Map(mTileSetPath, mDirectory + "colliders06.map", 11, 11);
 
-	mMaps[7] = new Map(mTileSetPath, path + "map07.map", 11, 11);
-	mFxMaps[7] = new Map(mTileSetPath, path + "mapFx07.map", 11, 11);
+	mMaps[7] = new Map(mTileSetPath, mDirectory + "map07.map", 11, 11);
+	mFxMaps[7] = new Map(mTileSetPath, mDirectory + "mapFx07.map", 11, 11);
+	mColliderMaps[7] = new Map(mTileSetPath, mDirectory + "colliders07.map", 11, 11);
 
-	mMaps[8] = new Map(mTileSetPath, path + "map08.map", 11, 11);
-	mFxMaps[8] = new Map(mTileSetPath, path + "mapFx08.map", 11, 11);
+	mMaps[8] = new Map(mTileSetPath, mDirectory + "map08.map", 11, 11);
+	mFxMaps[8] = new Map(mTileSetPath, mDirectory + "mapFx08.map", 11, 11);
+	mColliderMaps[8] = new Map(mTileSetPath, mDirectory + "colliders08.map", 11, 11);
 
-	mMaps[9] = new Map(mTileSetPath, path + "map09.map", 11, 11);
-	mFxMaps[9] = new Map(mTileSetPath, path + "mapFx09.map", 11, 11);
+	mMaps[9] = new Map(mTileSetPath, mDirectory + "map09.map", 11, 11);
+	mFxMaps[9] = new Map(mTileSetPath, mDirectory + "mapFx09.map", 11, 11);
+	mColliderMaps[9] = new Map(mTileSetPath, mDirectory + "colliders09.map", 11, 11);
 }
 
 void PlayScreen::Update()
@@ -157,11 +183,6 @@ void PlayScreen::Update()
 			if (mLevelStartTimer >= mLevelStartDelay)
 			{
 				StartNextLevel();
-				if (mCurrentLevel > 0)
-				{
-					mMaps[mCurrentLevel - 1]->LoadMap();
-					mFxMaps[mCurrentLevel - 1]->LoadMap();
-				}
 				mPlayer->Active(true);
 				mPlayer->Visible(true);
 			}
@@ -212,7 +233,10 @@ void PlayScreen::Render()
 			mPlayer->Visible(true);
 			mPlayer->Render();
 			if (mCurrentLevel > 0)
+			{
 				mFxMaps[mCurrentLevel - 1]->Render();
+				mColliderMaps[mCurrentLevel - 1]->Render();
+			}
 		}
 		mHUD->Render();
 	}

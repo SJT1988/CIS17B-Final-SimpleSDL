@@ -33,9 +33,11 @@ private:
 
 	Player* mPlayer;
 
+	const std::string mDirectory = "Debug\\Assets\\";
 	std::string mTileSetPath;
 	Map* mMaps[10];
 	Map* mFxMaps[10];
+	Map* mColliderMaps[10];
 
 private:
 

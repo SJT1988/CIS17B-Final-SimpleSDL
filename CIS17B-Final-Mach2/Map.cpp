@@ -1,6 +1,8 @@
 #include "Map.h"
 #include <fstream>
 #include <iostream>
+#include "BoxCollider.h"
+
 Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY)
 {
 	mTileSetPath = tileSetPath;
@@ -11,10 +13,17 @@ Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY)
 
 Map::~Map()
 {
-	
 	mMapTiles.clear();
 	mMapTiles.~vector();
 	// std::vector<Texture*>().swap(mMapTiles); // instant de-allocation!
+	for (Collider* c : mMapColliders)
+	{
+		delete c;
+		c = NULL;
+	}
+	//superfulous?
+	mMapColliders.clear();
+	mMapColliders.~vector();
 }
 
 // Load the .map tiles:
@@ -54,30 +63,40 @@ need it here to initialize "scaledSize", which should be set for every map in th
 */
 
 // TODO
-/*
-void Map::LoadColliders(std::string path, int sizeX, int sizeY)
+
+void Map::LoadColliders(std::string colFilePath)
 {
 	char c;
 	std::fstream mapFile;
-	mapFile.open(path);
-	int srcX, srcY; // these don't seem to be FOR anything...
-	for (int y = 0; y < sizeY; y++)
+	mapFile.open(colFilePath);
+	int srcX, srcY;
+	for (int y = 0; y < mSizeY; y++)
 	{
-		for (int x = 0; x < sizeX; x++)
+		for (int x = 0; x < mSizeX; x++)
 		{
 			mapFile.get(c);
 			if (c == '1')
 			{
+				BoxCollider* bc = new BoxCollider(Vector2(28.0f, 28.0f));
+				AddCollider(bc, Vector2(x*TILE_SIZE, y*TILE_SIZE));
+				mMapColliders.push_back(std::move(bc));
+				//BoxCollider bc = BoxCollider(Vector2(TILE_SIZE, TILE_SIZE));
+				//AddCollider(&bc);
+				//mColliders.push_back(bc);
+				//mColliders.back().Parent(this);
+				//mColliders.back().Pos(Vector2(x*TILE_SIZE, y*TILE_SIZE));
+				/*
 				auto& tileCollider(manager.addEntity());
 				tileCollider.addComponent<ColliderComponent>("terrainCollider", x * scaledSize, y * scaledSize, scaledSize, scaledSize);
 				tileCollider.addGroup(Game::groupColliders);
+				*/
 			}
 			mapFile.ignore();
 		}
 	}
 	mapFile.close();
 }
-*/
+
 
 void Map::AddTile(int srcX, int srcY, int posX, int posY)
 {
@@ -97,7 +116,11 @@ void Map::AddTile(int srcX, int srcY, int posX, int posY)
 void Map::Render()
 {
 	for (Texture t : mMapTiles)
-	{
 		t.Render();
-	}
+	/*
+	for (Collider c : mColliders)
+		c.PhysicsEntity::Render();
+	*/
+	for (Collider* c : mMapColliders)
+		c->Render();
 }

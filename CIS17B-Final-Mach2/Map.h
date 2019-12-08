@@ -2,23 +2,25 @@
 #include <string>
 #include "Texture.h"
 #include <vector>
+#include "PhysicsEntity.h"
 
 using namespace QuickSDL;
 
-class Map : public GameEntity
+class Map : public PhysicsEntity
 {
 private:
 
 	std::vector<Texture> mMapTiles;
-	//std::vector<Texture*> mMapTiles;	
+	std::vector<Collider*> mMapColliders;
 	std::string mTileSetPath;
-	std::string mMapFilePath;
+	
 	
 public:
 
 	const int TILE_SIZE = 32;
 	int mSizeX;
 	int mSizeY;
+	std::string mMapFilePath;
 
 public:
 	Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY);
@@ -27,7 +29,7 @@ public:
 	void LoadMap();
 	// void LoadMap(std::string path, int sizeX, int sizeY);
 	
-	// void LoadColliders(std::string path, int sizeX, int sizeY);
+	void LoadColliders(std::string colFilePath);
 	
 	void Render();
 
