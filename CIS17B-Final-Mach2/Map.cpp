@@ -89,25 +89,31 @@ void Map::CreateColliders(std::string colFilePath)
 		for (int x = 0; x < mSizeX; x++)
 		{
 			mapFile.get(c);
-			if (c == '1')
+			if (c == '1') // wall
 			{
 				mColliders1.push_back(new Collider(Vector2(32.0f, 32.0f), Collider::Wall));
 				mColliders1.back()->Parent(this);
 				mColliders1.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
 			}
-			else if (c == '2')
+			if (c == '5') // mushroom
+			{
+				mColliders1.push_back(new Collider(Vector2(24.0f, 24.0f), Collider::Wall));
+				mColliders1.back()->Parent(this);
+				mColliders1.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			else if (c == '2') // web
 			{
 				mColliders2.push_back(new Collider(Vector2(24.0f, 24.0f), Collider::Web));
 				mColliders2.back()->Parent(this);
 				mColliders2.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
 			}
-			else if (c == '3')
+			else if (c == '3') //spikes
 			{
 				mColliders3.push_back(new Collider(Vector2(24.0f, 24.0f), Collider::Spikes));
 				mColliders3.back()->Parent(this);
 				mColliders3.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
 			}
-			else if (c == '4')
+			else if (c == '4') //exit
 			{
 				mExit = new Collider(Vector2(32.0f, 32.0f), Collider::Exit);
 				mExit->Parent(this);

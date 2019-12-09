@@ -18,7 +18,7 @@ Player::Player()
 	//========================
 	// set collider
 
-	mCollider = new Collider(Vector2(32.0f,32.0f), Collider::Player);
+	mCollider = new Collider(Vector2(28.0f,28.0f), Collider::Player);
 	mCollider->Parent(this);
 	mCollider->Pos(VEC2_ZERO);
 

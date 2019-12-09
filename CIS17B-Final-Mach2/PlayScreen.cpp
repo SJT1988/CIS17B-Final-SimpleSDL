@@ -100,6 +100,7 @@ void PlayScreen::StartNextLevel()
 		mMaps[mCurrentLevel - 1]->CreateColliders(mColliderPaths[mCurrentLevel - 1]);
 		mFxMaps[mCurrentLevel - 1]->LoadMap();
 		mPlayer->Pos(mStartPos[mCurrentLevel - 1]);
+		mPlayerTempPos = mStartPos[mCurrentLevel - 1];
 		//std::cout << mPlayer->Pos(local) << std::endl;
 	}
 
@@ -322,10 +323,9 @@ void PlayScreen::CreateMonsters(int currentLevel)
 	}
 }
 
-void PlayScreen::ResolvePlayerMap()
+void PlayScreen::ResolvePlayerCollision()
 {
 	bool playerCollision = false;
-	Vector2 tempPos = mPlayer->Pos();
 
 	// Handle collision with walls and mushrooms:
 	for (Collider* c : mMaps[mCurrentLevel - 1]->mColliders1)
@@ -333,10 +333,12 @@ void PlayScreen::ResolvePlayerMap()
 		if (Collider::AABB(mPlayer->mCollider, c))
 		{
 			playerCollision = true;
-			mPlayer->Pos(tempPos);
+			mPlayer->Pos(mPlayerTempPos);
 			break;
 		}
 	}
+	if (playerCollision == false)
+		mPlayerTempPos = mPlayer->Pos(local);
 
 	// Handle collision with Monsters and Spikes:
 	for (Collider* c : mMaps[mCurrentLevel - 1]->mColliders3)
@@ -379,7 +381,7 @@ void PlayScreen::Update()
 		}
 		
 		if (mCurrentLevel > 0)
-			ResolvePlayerMap();
+			ResolvePlayerCollision();
 		
 
 		if (mInput->KeyPressed(SDL_SCANCODE_N))
