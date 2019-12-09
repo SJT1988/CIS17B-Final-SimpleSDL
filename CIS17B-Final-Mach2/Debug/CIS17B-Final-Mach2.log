@@ -1,2 +1,30 @@
-﻿  PlayScreen.cpp
+﻿  BoxCollider.cpp
+  Bullet.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\bullet.cpp(40): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  Collider.cpp
+  GameManager.cpp
+  Map.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(114): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(120): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(126): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(190): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  PhysicsEntity.cpp
+  PlayScreen.cpp
+  Player.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(124): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(125): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(131): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(155): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(158): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(163): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(166): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(171): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(174): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(179): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(182): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  ScreenManager.cpp
+  main.cpp
+  Generating Code...
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe

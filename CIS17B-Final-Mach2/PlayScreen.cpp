@@ -97,6 +97,7 @@ void PlayScreen::StartNextLevel()
 	if (mCurrentLevel > 0)
 	{
 		mMaps[mCurrentLevel - 1]->LoadMap();
+		mMaps[mCurrentLevel - 1]->CreateColliders(mColliderPaths[mCurrentLevel - 1]);
 		mFxMaps[mCurrentLevel - 1]->LoadMap();
 		mPlayer->Pos(mStartPos[mCurrentLevel-1]);
 		//std::cout << mPlayer->Pos(local) << std::endl;
@@ -172,48 +173,58 @@ void PlayScreen::CreateMaps()
 	const std::string path = "Debug\\Assets\\";
 	mMaps[0] = new Map(mTileSetPath, path + "map00.map", 15, 15, 0);
 	mFxMaps[0] = new Map(mTileSetPath, path + "mapFx00.map", 15, 15);
+	mColliderPaths[0] = path + "colliders00.map";
 	mStartPos[0] = Vector2(32.0f, 32.0f);
 
 	mMaps[1] = new Map(mTileSetPath, path + "map01.map", 21, 21, 1);
 	mFxMaps[1] = new Map(mTileSetPath, path + "mapFx01.map", 21, 21);
+	mColliderPaths[1] = path + "colliders01.map";
 	mStartPos[1] = Vector2(416.0f, 416.0f);
 
 	mMaps[2] = new Map(mTileSetPath, path + "map02.map", 31, 11, 2);
 	mFxMaps[2] = new Map(mTileSetPath, path + "mapFx02.map", 31, 11);
+	mColliderPaths[2] = path + "colliders02.map";
 	mStartPos[2] = Vector2(32, 32);
 	//mStartPos[2] = Vector2(928, 288);
 
 
 	mMaps[3] = new Map(mTileSetPath, path + "map03.map", 31, 15, 3);
 	mFxMaps[3] = new Map(mTileSetPath, path + "mapFx03.map", 31, 15);
+	mColliderPaths[3] = path + "colliders03.map";
 	mStartPos[3] = Vector2(32.0f, 32.0f);
 
 
 	mMaps[4] = new Map(mTileSetPath, path + "map04.map", 21, 21, 4);
 	mFxMaps[4] = new Map(mTileSetPath, path + "mapFx04.map", 21, 21);
+	mColliderPaths[4] = path + "colliders04.map";
 	mStartPos[4] = Vector2(608.0f, 608.0f); //Vector2(32, 96);
 
 
 	mMaps[5] = new Map(mTileSetPath, path + "map05.map", 39, 19, 5);
 	mFxMaps[5] = new Map(mTileSetPath, path + "mapFx05.map", 39, 19);
+	mColliderPaths[5] = path + "colliders05.map";
 	mStartPos[5] = Vector2(96.0f, 32.0f);
 
 
 	mMaps[6] = new Map(mTileSetPath, path + "map06.map", 31, 21, 6);
 	mFxMaps[6] = new Map(mTileSetPath, path + "mapFx06.map", 31, 21);
+	mColliderPaths[6] = path + "colliders06.map";
 	mStartPos[6] = Vector2(928.0f, 544.0f); // Vector2(32, 32);
 
 
 	mMaps[7] = new Map(mTileSetPath, path + "map07.map", 39, 21, 7);
 	mFxMaps[7] = new Map(mTileSetPath, path + "mapFx07.map", 39, 21);
+	mColliderPaths[7] = path + "colliders07.map";
 	mStartPos[7] = Vector2(32.0f, 32.0f);
 
 	mMaps[8] = new Map(mTileSetPath, path + "map08.map", 15, 15, 8);
 	mFxMaps[8] = new Map(mTileSetPath, path + "mapFx08.map", 15, 15);
+	mColliderPaths[8] = path + "colliders08.map";
 	mStartPos[8] = Vector2(416.0f, 416.0f);
 
 	mMaps[9] = new Map(mTileSetPath, path + "map09.map", 39, 21, 9);
 	mFxMaps[9] = new Map(mTileSetPath, path + "mapFx09.map", 39, 21);
+	mColliderPaths[9] = path + "colliders09.map";
 	mStartPos[9] = Vector2(1184, 32);
 
 }

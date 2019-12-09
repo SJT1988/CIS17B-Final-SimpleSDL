@@ -21,6 +21,11 @@ void Collider::SetTexture(Texture* texture)
 	mTexture->Parent(this);
 }
 
+void Collider::SetTrigger(TriggerType trigger)
+{
+	mTrigger = trigger;
+}
+
 void Collider::Render()
 {
 	if (SHOW_COLLIDERS)

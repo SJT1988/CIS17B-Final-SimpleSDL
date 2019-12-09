@@ -7,10 +7,12 @@ class Collider : public GameEntity
 {
 public:
 	enum class ColliderType {Box, Circle};
+	enum TriggerType {Wall, Web, Spikes, Exit};
 
 protected:
 
 	ColliderType mType;
+	TriggerType mTrigger;
 
 	static const bool SHOW_COLLIDERS = true;
 	Texture* mTexture;
@@ -25,6 +27,7 @@ public:
 protected:
 
 	void SetTexture(Texture* texture);
+	void SetTrigger(TriggerType trigger);
 };
 
 /*

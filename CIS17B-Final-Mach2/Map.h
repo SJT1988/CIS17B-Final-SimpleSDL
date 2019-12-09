@@ -14,6 +14,12 @@ private:
 	std::vector<Collider*> mMapColliders;
 	std::string mTileSetPath;
 	int mMapIndex;
+
+	//std::string mColliderPath;
+	std::vector<Texture*> mColliders1;
+	std::vector<Texture*> mColliders2;
+	std::vector<Texture*> mColliders3;
+	Texture* mExit; //4
 	
 	
 public:
@@ -30,7 +36,8 @@ public:
 	void LoadMap();
 	// void LoadMap(std::string path, int sizeX, int sizeY);
 	
-	void LoadColliders(std::string colFilePath);
+	void CreateColliders(std::string colFilePath);
+	//void LoadColliders(std::string colFilePath);
 	
 	void Render();
 

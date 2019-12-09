@@ -28,8 +28,35 @@ Map::~Map()
 		c = NULL;
 	}
 	//superfulous?
-	mMapColliders.clear();
-	mMapColliders.~vector();
+	//mMapColliders.clear();
+	//mMapColliders.~vector();
+
+
+
+	for (Texture* t : mColliders1)
+	{
+		delete t;
+		t = NULL;
+	}
+	mColliders1.clear();
+	mColliders1.~vector();
+	for (Texture* t : mColliders2)
+	{
+		delete t;
+		t = NULL;
+	}
+	mColliders2.clear();
+	mColliders2.~vector();
+	for (Texture* t : mColliders3)
+	{
+		delete t;
+		t = NULL;
+	}
+	mColliders3.clear();
+	mColliders3.~vector();
+	
+	delete mExit;
+	mExit = NULL;
 }
 
 // Load the .map tiles:
@@ -62,10 +89,51 @@ void Map::LoadMap()
 }
 
 
+void Map::CreateColliders(std::string colFilePath)
+{
+	std::cout << colFilePath << std::endl;
+	char c;
+	std::fstream mapFile;
+	mapFile.open(colFilePath);
+	//int srcX, srcY;
+	for (int y = 0; y < mSizeY; y++)
+	{
+		for (int x = 0; x < mSizeX; x++)
+		{
+			mapFile.get(c);
+			if (c == '1')
+			{
+				mColliders1.push_back(new Texture("collider.png"));
+				mColliders1.back()->Parent(this);
+				mColliders1.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			else if (c == '2')
+			{
+				mColliders2.push_back(new Texture("collider2.png"));
+				mColliders2.back()->Parent(this);
+				mColliders2.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			else if (c == '3')
+			{
+				mColliders3.push_back(new Texture("collider3.png"));
+				mColliders3.back()->Parent(this);
+				mColliders3.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			else if (c == '4')
+			{
+				mExit = new Texture("exit.png");
+				mExit->Parent(this);
+				mExit->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			mapFile.ignore();
+		}
+	}
+	mapFile.close();
+}
 
 
 // TODO
-
+/*
 void Map::LoadColliders(std::string colFilePath)
 {
 	char c;
@@ -87,18 +155,18 @@ void Map::LoadColliders(std::string colFilePath)
 				//mColliders.push_back(bc);
 				//mColliders.back().Parent(this);
 				//mColliders.back().Pos(Vector2(x*TILE_SIZE, y*TILE_SIZE));
-				/*
-				auto& tileCollider(manager.addEntity());
-				tileCollider.addComponent<ColliderComponent>("terrainCollider", x * scaledSize, y * scaledSize, scaledSize, scaledSize);
-				tileCollider.addGroup(Game::groupColliders);
-				*/
+				
+				//auto& tileCollider(manager.addEntity());
+				//tileCollider.addComponent<ColliderComponent>("terrainCollider", x * scaledSize, y * scaledSize, scaledSize, scaledSize);
+				//tileCollider.addGroup(Game::groupColliders);
+				
 			}
 			mapFile.ignore();
 		}
 	}
 	mapFile.close();
 }
-
+*/
 
 void Map::AddTile(int srcX, int srcY, int posX, int posY)
 {
@@ -137,6 +205,22 @@ void Map::Render()
 	for (Collider c : mColliders)
 		c.PhysicsEntity::Render();
 	*/
+	/*
 	for (Collider* c : mMapColliders)
 		c->Render();
+	*/
+	for (Texture* t : mColliders1)
+	{
+		t->Render();
+	}
+	for (Texture* t : mColliders2)
+	{
+		t->Render();
+	}
+	for (Texture* t : mColliders3)
+	{
+		t->Render();
+	}
+	if (mExit)
+		mExit->Render();
 }
