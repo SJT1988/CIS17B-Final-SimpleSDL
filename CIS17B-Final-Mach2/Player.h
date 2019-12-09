@@ -38,16 +38,13 @@ private:
 	//=================
 	// Collider
 
-	
+	Collider* mCollider;
 
 	//==================
 	// Bullet
 
 	const static int MAX_BULLETS = 4;
 	Bullet* mBullets[MAX_BULLETS];
-	// std::vector<Bullet*> mBullets;
-
-	
 
 private:
 

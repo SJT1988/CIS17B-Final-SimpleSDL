@@ -1,5 +1,6 @@
 #pragma once
 #include "AnimatedTexture.h"
+#include "Collider.h";
 
 using namespace QuickSDL;
 
@@ -14,6 +15,7 @@ public:
 
 	AnimatedTexture* mTexture;
 	float mSpeed;
+	Collider* mCollider;
 
 public:
 

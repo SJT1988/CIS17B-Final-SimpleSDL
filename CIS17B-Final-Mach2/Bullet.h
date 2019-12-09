@@ -1,10 +1,10 @@
 #pragma once
-#include "PhysicsEntity.h"
+#include "Collider.h"
 #include "Timer.h"
 
 using namespace QuickSDL;
 
-class Bullet : public PhysicsEntity
+class Bullet : public GameEntity
 {
 private:
 	Timer* mTimer;
@@ -13,7 +13,7 @@ private:
 
 public:
 	Vector2 mDirection;
-
+	Collider* mCollider;
 public:
 	Bullet();
 	~Bullet();

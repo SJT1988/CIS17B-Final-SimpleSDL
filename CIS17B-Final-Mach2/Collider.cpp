@@ -1,8 +1,32 @@
 #include "Collider.h"
 
-Collider::Collider(ColliderType type) : mType(type)
+Collider::Collider(Vector2 size, TriggerType type)
 {
+	mSize = size;
+	// Left-Right, Top-Bottom order
+	AddVertex(0, Vector2(-0.5f*size.x, -0.5f*size.y));
+	AddVertex(1, Vector2(0.5f*size.x, -0.5f*size.y));
+	AddVertex(2, Vector2(-0.5f*size.x, 0.5f*size.y));
+	AddVertex(3, Vector2(0.5f*size.x, 0.5f*size.y));
+
 	mTexture = nullptr;
+
+	if (SHOW_COLLIDERS)
+	{
+		if (mTrigger == Web)
+			SetTexture(new Texture("collider2.png"));
+		else if (mTrigger == Spikes)
+			SetTexture(new Texture("collider3.png"));
+		else if (mTrigger == Exit)
+			SetTexture(new Texture("exit.png"));
+		else // Bullet, Wall, or other
+			SetTexture(new Texture("collider.png"));
+		// this outta do it:
+		mTexture->Scale(this->mSize / mTexture->mWidth);
+
+		//this part made no sense:
+		//mTexture->Scale(size / 100.0f);
+	}
 }
 
 Collider::~Collider()
@@ -12,6 +36,12 @@ Collider::~Collider()
 		delete mTexture;
 		mTexture = nullptr;
 	}
+}
+
+void Collider::AddVertex(int index, Vector2 pos)
+{
+	mVerts[index] = new GameEntity(pos);
+	mVerts[index]->Parent(this);
 }
 
 void Collider::SetTexture(Texture* texture)
@@ -24,6 +54,19 @@ void Collider::SetTexture(Texture* texture)
 void Collider::SetTrigger(TriggerType trigger)
 {
 	mTrigger = trigger;
+}
+
+bool Collider::AABB(Collider colA, Collider colB)
+{
+	if (
+		colA.mVerts[0]->Pos().x + colA.mSize.x >= colB.mVerts[0]->Pos().x &&
+		colB.mVerts[0]->Pos().x + colB.mSize.x >= colA.mVerts[0]->Pos().x &&
+		colA.mVerts[0]->Pos().y + colA.mSize.y >= colB.mVerts[0]->Pos().y &&
+		colB.mVerts[0]->Pos().y + colB.mSize.y >= colA.mVerts[0]->Pos().y
+		)
+		return true;
+
+	return false;
 }
 
 void Collider::Render()

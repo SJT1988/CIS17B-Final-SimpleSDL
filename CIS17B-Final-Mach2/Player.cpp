@@ -16,6 +16,13 @@ Player::Player()
 	mLives = 1;
 
 	//========================
+	// set collider
+
+	mCollider = new Collider(Vector2(32.0f,32.0f), Collider::Player);
+	mCollider->Parent(this);
+	mCollider->Pos(VEC2_ZERO);
+
+	//========================
 	// initialize animations
 	AnimatedTexture* mAnim_IdleUp =
 		new AnimatedTexture("RickTangle_SpriteSheet.png", 0, TILE_WIDTH * 0, TILE_WIDTH, TILE_WIDTH, 1, 0.0f, AnimatedTexture::horizontal);
@@ -77,9 +84,10 @@ Player::Player()
 	for (int i = 0; i < MAX_BULLETS; i++)
 	{
 		mBullets[i] = new Bullet();
-		//mBullets[i]->Parent(this);
-		//mBullets[i]->Pos(VEC2_ZERO);
 	}
+
+	//std::cout << "Bullet collider Texture dim:" << mBullets[0]->mTexture->ScaledDimensions() << std::endl;
+	//std::cout << "Bullet collider dim:" << mBullets[0]->mCollider->mSize << std::endl;
 
 	//======================
 	// Initilize Texture:
@@ -321,6 +329,7 @@ void Player::Render()
 	{
 		mPlayerTex->mFlip = Player::mFlip;
 		mPlayerTex->Render();
+		mCollider->Render();
 	}
 	for (Bullet* b : mBullets)
 	{

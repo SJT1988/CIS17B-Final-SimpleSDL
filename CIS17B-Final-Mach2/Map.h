@@ -2,11 +2,11 @@
 #include <string>
 #include "Texture.h"
 #include <vector>
-#include "PhysicsEntity.h"
+#include "Collider.h"
 
 using namespace QuickSDL;
 
-class Map : public PhysicsEntity
+class Map : public GameEntity
 {
 private:
 
@@ -20,7 +20,6 @@ private:
 	std::vector<Texture*> mColliders2;
 	std::vector<Texture*> mColliders3;
 	Texture* mExit; //4
-	
 	
 public:
 

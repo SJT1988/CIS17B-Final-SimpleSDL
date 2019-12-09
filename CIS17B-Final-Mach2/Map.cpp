@@ -1,7 +1,6 @@
 #include "Map.h"
 #include <fstream>
 #include <iostream>
-#include "BoxCollider.h"
 //#include <regex>
 
 Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY, int mapIndex)
@@ -91,7 +90,7 @@ void Map::LoadMap()
 
 void Map::CreateColliders(std::string colFilePath)
 {
-	std::cout << colFilePath << std::endl;
+	//std::cout << colFilePath << std::endl;
 	char c;
 	std::fstream mapFile;
 	mapFile.open(colFilePath);

@@ -1,3 +1,4 @@
-﻿  PlayScreen.cpp
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\playscreen.cpp(215): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Monster.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.cpp(10): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe
