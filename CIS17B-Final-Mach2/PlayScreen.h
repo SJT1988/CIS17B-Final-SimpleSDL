@@ -1,6 +1,5 @@
 #pragma once
 #include "AudioManager.h"
-//#include "Level.h"
 #include "GameEntity.h"
 #include "Map.h"
 #include "HUD.h"
@@ -63,6 +62,8 @@ private:
 
 	void MonsterSpawner(int x, int y);
 	void CreateMonsters(int currentLevel);
+
+	void ResolvePlayerMap();
 
 public:
 	PlayScreen();

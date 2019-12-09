@@ -103,13 +103,12 @@ void PlayScreen::StartNextLevel()
 		//std::cout << mPlayer->Pos(local) << std::endl;
 	}
 
-
-	// Create monsters:
+	// Delete previous monsters:
 	if (!mMonsters.empty())
 	{
 		mMonsters.clear();
 	}
-
+	// Create new monsters:
 	CreateMonsters(mCurrentLevel);
 
 	mPlayer->Active(true);
@@ -163,7 +162,6 @@ void PlayScreen::CreateMaps()
 	mColliderPaths[2] = path + "colliders02.map";
 	mStartPos[2] = Vector2(32, 32);
 	//mStartPos[2] = Vector2(928, 288);
-
 
 	mMaps[3] = new Map(mTileSetPath, path + "map03.map", 31, 15, 3);
 	mFxMaps[3] = new Map(mTileSetPath, path + "mapFx03.map", 31, 15);
@@ -324,6 +322,50 @@ void PlayScreen::CreateMonsters(int currentLevel)
 	}
 }
 
+void PlayScreen::ResolvePlayerMap()
+{
+	bool playerCollision = false;
+	Vector2 tempPos = mPlayer->Pos();
+
+	// Handle collision with walls and mushrooms:
+	for (Collider* c : mMaps[mCurrentLevel - 1]->mColliders1)
+	{
+		if (Collider::AABB(mPlayer->mCollider, c))
+		{
+			playerCollision = true;
+			mPlayer->Pos(tempPos);
+			break;
+		}
+	}
+
+	// Handle collision with Monsters and Spikes:
+	for (Collider* c : mMaps[mCurrentLevel - 1]->mColliders3)
+	{
+		if (Collider::AABB(mPlayer->mCollider, c))
+		{
+			std::cout << "DEATH BY SPIKES!" << std::endl;
+			break;
+		}
+	}
+	for (Monster* m : mMonsters)
+	{
+		if (Collider::AABB(mPlayer->mCollider, m->mCollider))
+		{
+			std::cout << "DEATH BY MONSTER!" << std::endl;
+		}
+	}
+
+	// Handle collision with Webs:
+	for (Collider* c : mMaps[mCurrentLevel - 1]->mColliders2)
+	{
+		if (Collider::AABB(mPlayer->mCollider, c))
+		{
+			std::cout << "STUCK!" << std::endl;
+			break;
+		}
+	}
+}
+
 void PlayScreen::Update()
 {
 	// std::cout << mPlayer->Pos(local) << std::endl;
@@ -333,9 +375,12 @@ void PlayScreen::Update()
 		for (Monster* m : mMonsters)
 		{
 			m->Update();
-			m->Move(mPlayer->Pos());
+			m->Move(mPlayer->Pos());			
 		}
-
+		
+		if (mCurrentLevel > 0)
+			ResolvePlayerMap();
+		
 
 		if (mInput->KeyPressed(SDL_SCANCODE_N))
 		{
@@ -347,13 +392,6 @@ void PlayScreen::Update()
 			{
 				m->Active(false);
 			}
-			/*
-			for (Monster* m : mMonsters)
-			{
-				delete m;
-				m = NULL;
-			}
-			*/
 		}
 	}
 	else if (mGameStarted)
@@ -383,7 +421,6 @@ void PlayScreen::Update()
 
 void PlayScreen::Render()
 {
-
 	if (!mGameStarted)
 	{
 		mBeginLabel0->Render();

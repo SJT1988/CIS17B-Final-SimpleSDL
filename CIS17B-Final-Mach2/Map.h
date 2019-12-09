@@ -11,15 +11,8 @@ class Map : public GameEntity
 private:
 
 	std::vector<Texture> mMapTiles;
-	//std::vector<Collider*> mMapColliders;
 	std::string mTileSetPath;
 	int mMapIndex;
-
-	//std::string mColliderPath;
-	std::vector<Collider*> mColliders1;
-	std::vector<Collider*> mColliders2;
-	std::vector<Collider*> mColliders3;
-	Collider* mExit; //4
 	
 public:
 
@@ -27,6 +20,12 @@ public:
 	int mSizeX;
 	int mSizeY;
 	std::string mMapFilePath;
+
+	// these are accessed in PlayScreen.cpp to test collisions.
+	std::vector<Collider*> mColliders1;
+	std::vector<Collider*> mColliders2;
+	std::vector<Collider*> mColliders3;
+	Collider* mExit; //4
 
 public:
 	Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY, int mapIndex = 0);

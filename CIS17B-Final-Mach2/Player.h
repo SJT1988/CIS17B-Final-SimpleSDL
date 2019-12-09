@@ -35,16 +35,17 @@ private:
 	// Vector2 mMoveBounds;
 	// const float OFFSET = 16.0f;
 
-	//=================
-	// Collider
-
-	Collider* mCollider;
+	
 
 	//==================
 	// Bullet
 
 	const static int MAX_BULLETS = 4;
 	Bullet* mBullets[MAX_BULLETS];
+
+public:
+
+	Collider* mCollider;
 
 private:
 

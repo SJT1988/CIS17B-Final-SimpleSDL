@@ -8,12 +8,13 @@ class Collider : public GameEntity
 private:
 
 	static const int MAX_VERTS = 4;
-	GameEntity* mVerts[MAX_VERTS];
+	
 
 public:
 
 	enum TriggerType {Bullet, Wall, Web, Spikes, Exit, Player, Monster};
 	Vector2 mSize;
+	GameEntity* mVerts[MAX_VERTS];
 
 protected:
 
@@ -26,7 +27,7 @@ public:
 	Collider(Vector2 size,TriggerType type);
 	~Collider();
 
-	bool AABB(Collider colA, Collider colB);
+	static bool AABB(Collider* colA, Collider* colB);
 
 	void Render();
 

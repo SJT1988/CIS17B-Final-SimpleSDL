@@ -54,13 +54,17 @@ void Collider::SetTrigger(TriggerType trigger)
 	mTrigger = trigger;
 }
 
-bool Collider::AABB(Collider colA, Collider colB)
+bool Collider::AABB(Collider* colA, Collider* colB)
 {
+	//std::cout << "colA.mVerts[0]->Pos()\.x " << colA.mVerts[0]->Pos().x << "+ colA.mSize.x " << colA.mSize.x << "> colB.mVerts[0]->Pos()\.x" << colB.mVerts[0]->Pos().x << "&&" << std::endl;
+	//std::cout << "colB.mVerts[0]->Pos()\.x " << colB.mVerts[0]->Pos().x << "+ colB.mSize.x " << colB.mSize.x << "> colA.mVerts[0]->Pos()\.x" << colA.mVerts[0]->Pos().x << "&&" << std::endl;
+	//std::cout << "colA.mVerts[0]->Pos()\.y " << colA.mVerts[0]->Pos().y << "+ colA.mSize.x " << colA.mSize.y << "> colB.mVerts[0]->Pos()\.y" << colB.mVerts[0]->Pos().y << "&&" << std::endl;
+	//std::cout << "colB.mVerts[0]->Pos()\.y " << colB.mVerts[0]->Pos().y << "+ colB.mSize.x " << colB.mSize.y << "> colA.mVerts[0]->Pos()\.y" << colA.mVerts[0]->Pos().y << "&&" << std::endl;
 	if (
-		colA.mVerts[0]->Pos().x + colA.mSize.x >= colB.mVerts[0]->Pos().x &&
-		colB.mVerts[0]->Pos().x + colB.mSize.x >= colA.mVerts[0]->Pos().x &&
-		colA.mVerts[0]->Pos().y + colA.mSize.y >= colB.mVerts[0]->Pos().y &&
-		colB.mVerts[0]->Pos().y + colB.mSize.y >= colA.mVerts[0]->Pos().y
+		colA->mVerts[0]->Pos().x + colA->mSize.x > colB->mVerts[0]->Pos().x &&
+		colB->mVerts[0]->Pos().x + colB->mSize.x > colA->mVerts[0]->Pos().x &&
+		colA->mVerts[0]->Pos().y + colA->mSize.y > colB->mVerts[0]->Pos().y &&
+		colB->mVerts[0]->Pos().y + colB->mSize.y > colA->mVerts[0]->Pos().y
 		)
 		return true;
 
