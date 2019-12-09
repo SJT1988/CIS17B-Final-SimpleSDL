@@ -3,6 +3,8 @@
 #include "Texture.h"
 #include <vector>
 #include "PhysicsEntity.h"
+#include "BoxCollider.h"
+
 
 using namespace QuickSDL;
 
@@ -11,15 +13,14 @@ class Map : public PhysicsEntity
 private:
 
 	std::vector<Texture> mMapTiles;
-	std::vector<Collider*> mMapColliders;
 	std::string mTileSetPath;
 	int mMapIndex;
 
 	//std::string mColliderPath;
-	std::vector<Texture*> mColliders1;
-	std::vector<Texture*> mColliders2;
-	std::vector<Texture*> mColliders3;
-	Texture* mExit; //4
+	std::vector<BoxCollider*> mColliders1;
+	std::vector<BoxCollider*> mColliders2;
+	std::vector<BoxCollider*> mColliders3;
+	BoxCollider* mExit; //4
 	
 	
 public:

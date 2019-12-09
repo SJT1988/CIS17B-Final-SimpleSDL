@@ -10,7 +10,9 @@ Bullet::Bullet()
 	mTexture->Pos(VEC2_ZERO);
 	mDirection = VEC2_ZERO;
 
-	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+	BoxCollider* col = new BoxCollider(Vector2(8.0f,8.0f));
+	col->SetTrigger(Collider::Bullet);
+	AddCollider(col);
 }
 
 Bullet::~Bullet()

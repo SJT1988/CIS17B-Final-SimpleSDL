@@ -1,7 +1,6 @@
 #include "Map.h"
 #include <fstream>
 #include <iostream>
-#include "BoxCollider.h"
 //#include <regex>
 
 Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY, int mapIndex)
@@ -21,36 +20,27 @@ Map::~Map()
 	}
 	mMapTiles.clear();
 	mMapTiles.~vector();
-	// std::vector<Texture*>().swap(mMapTiles); // instant de-allocation!
-	for (Collider* c : mMapColliders)
+
+
+
+	for (BoxCollider* b : mColliders1)
 	{
-		delete c;
-		c = NULL;
-	}
-	//superfulous?
-	//mMapColliders.clear();
-	//mMapColliders.~vector();
-
-
-
-	for (Texture* t : mColliders1)
-	{
-		delete t;
-		t = NULL;
+		delete b;
+		b = NULL;
 	}
 	mColliders1.clear();
 	mColliders1.~vector();
-	for (Texture* t : mColliders2)
+	for (BoxCollider* b : mColliders2)
 	{
-		delete t;
-		t = NULL;
+		delete b;
+		b = NULL;
 	}
 	mColliders2.clear();
 	mColliders2.~vector();
-	for (Texture* t : mColliders3)
+	for (BoxCollider* b : mColliders3)
 	{
-		delete t;
-		t = NULL;
+		delete b;
+		b = NULL;
 	}
 	mColliders3.clear();
 	mColliders3.~vector();
@@ -103,27 +93,47 @@ void Map::CreateColliders(std::string colFilePath)
 			mapFile.get(c);
 			if (c == '1')
 			{
-				mColliders1.push_back(new Texture("collider.png"));
+				mColliders1.push_back(new BoxCollider(Vector2(32.0f, 32.0f)));
+				mColliders1.back()->SetTrigger(Collider::Wall);
 				mColliders1.back()->Parent(this);
 				mColliders1.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				//mColliders1.push_back(new Texture("collider.png"));
+				//mColliders1.back()->Parent(this);
+				//mColliders1.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
 			}
 			else if (c == '2')
 			{
-				mColliders2.push_back(new Texture("collider2.png"));
+				mColliders2.push_back(new BoxCollider(Vector2(24.0f, 24.0f)));
+				mColliders2.back()->SetTrigger(BoxCollider::Web);
 				mColliders2.back()->Parent(this);
 				mColliders2.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				//mColliders2.back()->Scale(Vector2(0.75f, 0.75f));
+				//mColliders2.push_back(new Texture("collider2.png"));
+				//mColliders2.back()->Parent(this);
+				//mColliders2.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				//mColliders2.back()->Scale(Vector2(0.75f, 0.75f));
 			}
 			else if (c == '3')
 			{
-				mColliders3.push_back(new Texture("collider3.png"));
+				mColliders3.push_back(new BoxCollider(Vector2(24.0f, 24.0f)));
+				mColliders3.back()->SetTrigger(BoxCollider::Web);
 				mColliders3.back()->Parent(this);
 				mColliders3.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				//mColliders3.back()->Scale(Vector2(0.75f, 0.75f));
+				//mColliders3.push_back(new Texture("collider3.png"));
+				//mColliders3.back()->Parent(this);
+				//mColliders3.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				//mColliders3.back()->Scale(Vector2(0.75f, 0.75f));
 			}
 			else if (c == '4')
 			{
-				mExit = new Texture("exit.png");
+				mExit = new BoxCollider(Vector2(32.0f, 32.0f));
+				mExit->SetTrigger(BoxCollider::Exit);
 				mExit->Parent(this);
 				mExit->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				//mExit = new Texture("exit.png");
+				//mExit->Parent(this);
+				//mExit->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
 			}
 			mapFile.ignore();
 		}
@@ -209,18 +219,18 @@ void Map::Render()
 	for (Collider* c : mMapColliders)
 		c->Render();
 	*/
-	for (Texture* t : mColliders1)
+	for (BoxCollider* b : mColliders1)
 	{
-		t->Render();
+		b->BoxCollider::Render();
 	}
-	for (Texture* t : mColliders2)
+	for (BoxCollider* b : mColliders2)
 	{
-		t->Render();
+		b->BoxCollider::Render();
 	}
-	for (Texture* t : mColliders3)
+	for (BoxCollider* b : mColliders3)
 	{
-		t->Render();
+		b->BoxCollider::Render();
 	}
 	if (mExit)
-		mExit->Render();
+		mExit->BoxCollider::Render();
 }

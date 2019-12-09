@@ -1,14 +1,14 @@
 ﻿  BoxCollider.cpp
   Bullet.cpp
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\bullet.cpp(40): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\bullet.cpp(42): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
   Collider.cpp
   GameManager.cpp
   Map.cpp
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(114): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(120): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(126): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(190): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(109): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(121): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(133): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(200): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   PhysicsEntity.cpp
   PlayScreen.cpp
   Player.cpp

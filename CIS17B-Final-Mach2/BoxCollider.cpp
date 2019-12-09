@@ -10,8 +10,15 @@ BoxCollider::BoxCollider(Vector2 size) : Collider(ColliderType::Box)
 
 	if (SHOW_COLLIDERS)
 	{
-		SetTexture(new Texture("collider.png"));
-		mTexture->Scale(size / 100.0f);
+		if (mTrigger == Collider::Web)
+			Collider::SetTexture(new Texture("collider2.png"));
+		else if (mTrigger == Collider::Spikes)
+			Collider::SetTexture(new Texture("collider3.png"));
+		else if (mTrigger == Collider::Exit)
+			Collider::SetTexture(new Texture("exit.png"));
+		else
+			Collider::SetTexture(new Texture("collider.png"));
+		//mTexture->Scale(size / 100.0f);
 	}
 }
 
