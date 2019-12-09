@@ -112,12 +112,14 @@ void Map::CreateColliders(std::string colFilePath)
 				mColliders2.push_back(new Texture("collider2.png"));
 				mColliders2.back()->Parent(this);
 				mColliders2.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				mColliders2.back()->Scale(Vector2(0.75f, 0.75f));
 			}
 			else if (c == '3')
 			{
 				mColliders3.push_back(new Texture("collider3.png"));
 				mColliders3.back()->Parent(this);
 				mColliders3.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+				mColliders3.back()->Scale(Vector2(0.75f, 0.75f));
 			}
 			else if (c == '4')
 			{
