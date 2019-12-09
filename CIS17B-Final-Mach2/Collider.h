@@ -11,6 +11,7 @@ private:
 	GameEntity* mVerts[MAX_VERTS];
 
 public:
+
 	enum TriggerType {Bullet, Wall, Web, Spikes, Exit, Player, Monster};
 	Vector2 mSize;
 
@@ -35,30 +36,3 @@ private:
 	void SetTexture(Texture* texture);
 	void SetTrigger(TriggerType trigger);
 };
-
-/*
-class Collider : public GameEntity
-{
-public:
-
-	SDL_Rect mCollider;
-	Texture* mTexture;
-	bool mVisible;
-
-public:
-
-	Collider();
-	Collider(SDL_Rect rect);
-	Collider(float posX, float posY, float width, float height);
-	~Collider();
-	
-	static bool AABB(const SDL_Rect rectA, const SDL_Rect rectB);
-	static bool AABB(Collider colliderA, Collider colliderB);
-	// Set collider "visible" (true) or "invisible" (false);
-	void SetVisible(bool visible);
-
-	void Update();
-	void Render();
-	
-};
-*/

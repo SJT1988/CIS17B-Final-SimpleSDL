@@ -11,15 +11,15 @@ class Map : public GameEntity
 private:
 
 	std::vector<Texture> mMapTiles;
-	std::vector<Collider*> mMapColliders;
+	//std::vector<Collider*> mMapColliders;
 	std::string mTileSetPath;
 	int mMapIndex;
 
 	//std::string mColliderPath;
-	std::vector<Texture*> mColliders1;
-	std::vector<Texture*> mColliders2;
-	std::vector<Texture*> mColliders3;
-	Texture* mExit; //4
+	std::vector<Collider*> mColliders1;
+	std::vector<Collider*> mColliders2;
+	std::vector<Collider*> mColliders3;
+	Collider* mExit; //4
 	
 public:
 
