@@ -17,7 +17,7 @@ public:
 public:
 	Bullet();
 	~Bullet();
-	
+
 	void Fire();
 	void Reload();
 

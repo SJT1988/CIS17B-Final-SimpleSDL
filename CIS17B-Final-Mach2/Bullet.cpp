@@ -16,7 +16,6 @@ Bullet::Bullet()
 Bullet::~Bullet()
 {
 	mTimer = NULL;
-
 	delete mTexture;
 	mTexture = NULL;
 }
@@ -30,15 +29,18 @@ void Bullet::Fire()
 void Bullet::Reload()
 {
 	Active(false);
-	Pos(local) = VEC2_ZERO;
+	Pos(VEC2_ZERO);
+	//mDirection = VEC2_ZERO;
 }
 
 void Bullet::Update()
 {
+	//std::cout << mDirection << std::endl;
 	if (Active())
 	{
 		Translate(mDirection * mSpeed * mTimer->DeltaTime());
-		
+
+		//std::cout << Pos(local).x << "," << Pos(local).y << std::endl;
 		if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
 			(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
 		{
@@ -46,14 +48,6 @@ void Bullet::Update()
 		}
 	}
 
-	/*
-	if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
-		(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
-	{
-		this->~Bullet();
-	}
-	Fire();
-	*/
 }
 
 void Bullet::Render()

@@ -99,7 +99,7 @@ void PlayScreen::StartNextLevel()
 		mMaps[mCurrentLevel - 1]->LoadMap();
 		mMaps[mCurrentLevel - 1]->CreateColliders(mColliderPaths[mCurrentLevel - 1]);
 		mFxMaps[mCurrentLevel - 1]->LoadMap();
-		mPlayer->Pos(mStartPos[mCurrentLevel-1]);
+		mPlayer->Pos(mStartPos[mCurrentLevel - 1]);
 		//std::cout << mPlayer->Pos(local) << std::endl;
 	}
 
@@ -109,31 +109,8 @@ void PlayScreen::StartNextLevel()
 	{
 		mMonsters.clear();
 	}
-	mMonsters.emplace_back(new Monster(0.0f, 160.0f));
-	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(VEC2_ZERO);
 
-	/*
-	mMonsters.emplace_back(new Monster(10.0f, 40.0f));
-	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(VEC2_ZERO);
-
-	mMonsters.emplace_back(new Monster(40.0f, 70.0f));
-	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(Vector2(16.0f, 16.0f));
-
-	mMonsters.emplace_back(new Monster(70.0f, 100.0f));
-	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(Vector2(32.0f, 32.0f));
-
-	mMonsters.emplace_back(new Monster(100.0f, 130.0f));
-	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(Vector2(64.0f, 64.0f));
-
-	mMonsters.emplace_back(new Monster(130.0f, 160.0f));
-	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
-	mMonsters.back()->Pos(Vector2(96.0f, 96.0f));
-	*/
+	CreateMonsters(mCurrentLevel);
 
 	mPlayer->Active(true);
 	mPlayer->Visible(true);
@@ -227,6 +204,124 @@ void PlayScreen::CreateMaps()
 	mColliderPaths[9] = path + "colliders09.map";
 	mStartPos[9] = Vector2(1184, 32);
 
+}
+
+void PlayScreen::MonsterSpawner(int row, int col) {
+	float tempScale = RandomFloat(0.5f, 1.5f);
+	float tempSpeed = 120.f + RandomFloat(-60.0f,40.0f);
+	mMonsters.push_back(new Monster(0.0f, tempSpeed));
+	mMonsters.back()->Scale(Vector2(tempScale, tempScale));
+	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
+	mMonsters.back()->Pos(Vector2(row * 32, col * 32));
+
+}
+
+void PlayScreen::CreateMonsters(int currentLevel)
+{
+	switch (currentLevel)
+	{
+		//map00.map
+	case 1: //1313
+		MonsterSpawner( 1, 1);
+		MonsterSpawner( 6, 13);
+		MonsterSpawner( 7, 9);
+		MonsterSpawner( 13, 13);
+		break;
+		//map01.map
+	case 2: //1019
+		MonsterSpawner( 1, 1);
+		MonsterSpawner( 4, 19);
+		MonsterSpawner( 19, 1);
+		break;
+		//map02.map
+	case 3: //929
+		MonsterSpawner( 15, 1);
+		MonsterSpawner( 19, 9);
+		MonsterSpawner( 24, 1);
+		MonsterSpawner( 25, 4);
+		MonsterSpawner( 22, 9);
+		break;
+	case 4: //2813
+		MonsterSpawner( 8, 8);
+		MonsterSpawner( 9, 11);
+		MonsterSpawner( 16, 7);
+		MonsterSpawner( 12, 10);
+		MonsterSpawner( 18, 12);
+		MonsterSpawner( 24, 3);
+		MonsterSpawner( 25, 6);
+		MonsterSpawner( 27, 11);
+
+		break;
+	case 5: // 1919
+		MonsterSpawner( 2, 12);
+		MonsterSpawner( 4, 17);
+		MonsterSpawner( 8, 10);
+		MonsterSpawner( 13, 16);
+		MonsterSpawner( 15, 3);
+		MonsterSpawner( 17, 11);
+		MonsterSpawner( 1, 15);
+		break;
+	case 6: //2816
+		MonsterSpawner( 3, 14);
+		MonsterSpawner( 6, 16);
+		MonsterSpawner( 9, 16);
+		MonsterSpawner( 11, 9);
+		MonsterSpawner( 12, 15);
+		MonsterSpawner( 13, 2);
+		MonsterSpawner( 14, 7);
+		MonsterSpawner( 16, 4);
+		MonsterSpawner( 20, 9);
+		MonsterSpawner( 22, 15);
+		break;
+	case 7: //1929
+		MonsterSpawner( 1, 1);
+		MonsterSpawner( 5, 7);
+		MonsterSpawner( 2, 11);
+		MonsterSpawner( 4, 19);
+		MonsterSpawner( 4, 12);
+		MonsterSpawner( 8, 6);
+		MonsterSpawner( 14, 1);
+		MonsterSpawner( 18, 13);
+		MonsterSpawner( 21, 4);
+		MonsterSpawner( 23, 3);
+		MonsterSpawner( 22, 15);
+		break;
+	case 8: //3719
+		MonsterSpawner( 9, 15);
+		MonsterSpawner( 12, 1);
+		MonsterSpawner( 14, 9);
+		MonsterSpawner( 16, 3);
+		MonsterSpawner( 19, 18);
+		MonsterSpawner( 21, 6);
+		MonsterSpawner( 25, 3);
+		MonsterSpawner( 26, 7);
+		MonsterSpawner( 27, 9);
+		MonsterSpawner( 30, 7);
+		MonsterSpawner( 32, 14);
+
+		break;
+	case 9: //1313
+		MonsterSpawner( 1, 1);
+		MonsterSpawner( 3, 4);
+		MonsterSpawner( 2, 8);
+		MonsterSpawner( 4, 13);
+		MonsterSpawner( 7, 1);
+		MonsterSpawner( 6, 4);
+		MonsterSpawner( 13, 1);
+		MonsterSpawner( 11, 4);
+		break;
+	case 10://1938
+		for (int i = 1; i < 35; i += (7 + static_cast<int>(RandomFloat(-1.0f,2.0f))))
+		{
+			for (int j = 1; j < 17; j += (5 + static_cast<int>(RandomFloat(-1.0f, 2.0f))))
+			{
+				MonsterSpawner( i, j);
+			}
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void PlayScreen::Update()

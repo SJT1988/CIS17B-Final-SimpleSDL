@@ -61,6 +61,9 @@ private:
 	void StartNextLevel();
 	void CreateMaps();
 
+	void MonsterSpawner(int x, int y);
+	void CreateMonsters(int currentLevel);
+
 public:
 	PlayScreen();
 	~PlayScreen();

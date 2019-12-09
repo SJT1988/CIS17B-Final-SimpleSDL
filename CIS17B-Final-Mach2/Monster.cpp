@@ -37,6 +37,6 @@ void Monster::Update()
 
 void Monster::Render()
 {
-	if (Active()) 
+	if (Active())
 		mTexture->Render();
 }

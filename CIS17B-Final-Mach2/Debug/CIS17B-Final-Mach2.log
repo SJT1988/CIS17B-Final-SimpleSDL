@@ -1,7 +1,3 @@
-﻿  Map.cpp
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(114): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(121): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(128): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(192): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  PlayScreen.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\playscreen.cpp(215): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe
