@@ -9,6 +9,7 @@ Player::Player()
 	mFlip = SDL_FLIP_NONE;
 	mDirection = VEC2_UP;
 
+	mStuck = false;
 	mVisible = false;
 	mAnimating = false;
 
@@ -286,7 +287,7 @@ void Player::AddScore(int change)
 
 void Player::Update()
 {
-	if (Active())
+	if (Active() && !mStuck)
 	{
 		HandleMovement();
 		mPlayerTex->Update();

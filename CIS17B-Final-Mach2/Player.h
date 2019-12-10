@@ -9,6 +9,8 @@ using namespace QuickSDL;
 
 class Player :public GameEntity
 {
+public:
+	bool mStuck;
 private:
 	Timer* mTimer;
 	InputManager* mInput;

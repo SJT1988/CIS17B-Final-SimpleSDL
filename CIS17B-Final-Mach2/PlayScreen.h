@@ -33,6 +33,7 @@ private:
 
 	Player* mPlayer;
 	Vector2 mPlayerTempPos;
+	float mStuckTimer;
 	
 	//=====================
 	// Map stuff

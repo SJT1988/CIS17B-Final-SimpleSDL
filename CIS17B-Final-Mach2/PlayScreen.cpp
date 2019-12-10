@@ -358,12 +358,16 @@ void PlayScreen::ResolvePlayerCollision()
 	}
 
 	// Handle collision with Webs:
-	for (Collider* c : mMaps[mCurrentLevel - 1]->mColliders2)
+	if (mPlayer->mStuck == false && mStuckTimer == 0.0f)
 	{
-		if (Collider::AABB(mPlayer->mCollider, c))
+		for (Collider* c : mMaps[mCurrentLevel - 1]->mColliders2)
 		{
-			std::cout << "STUCK!" << std::endl;
-			break;
+			if (Collider::AABB(mPlayer->mCollider, c))
+			{
+				mPlayer->mStuck = true;
+				std::cout << "STUCK!" << std::endl;
+				break;
+			}
 		}
 	}
 }
@@ -373,6 +377,16 @@ void PlayScreen::Update()
 	// std::cout << mPlayer->Pos(local) << std::endl;
 	if (mGameStarted && mLevelStarted)
 	{
+		if (mPlayer->mStuck == true || mStuckTimer > 1.0f)
+		{
+			mStuckTimer += mTimer->DeltaTime();
+			if (mStuckTimer > 1.0f)
+			{
+				mPlayer->mStuck = false;
+			}
+			if (mStuckTimer > 2.0f)
+				mStuckTimer = 0.0f;
+		}
 		mPlayer->Update();
 		for (Monster* m : mMonsters)
 		{
