@@ -279,11 +279,13 @@ int Player::GetLives()
 {
 	return mLives;
 }
-
+/*
 void Player::AddScore(int change)
 {
 	mScore += change;
 }
+*/
+
 
 void Player::Update()
 {
@@ -326,7 +328,7 @@ void Player::Update()
 
 void Player::Render()
 {
-	if (mVisible)
+	if (mVisible && Active())
 	{
 		mPlayerTex->mFlip = Player::mFlip;
 		mPlayerTex->Render();

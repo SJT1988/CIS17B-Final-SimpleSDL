@@ -372,6 +372,24 @@ void PlayScreen::ResolvePlayerCollision()
 	}
 }
 
+void PlayScreen::ResolveBulletCollision()
+{
+	for (Bullet* b : mPlayer->mBullets)
+	{
+		if (b->Active())
+		{
+			for (Monster* m : mMonsters)
+			{
+				if (Collider::AABB(b->mCollider, m->mCollider))
+				{
+					b->Active(false);
+					m->Active(false);
+				}
+			}
+		}
+	}
+}
+
 void PlayScreen::Update()
 {
 	// std::cout << mPlayer->Pos(local) << std::endl;
@@ -396,9 +414,14 @@ void PlayScreen::Update()
 		
 		if (mCurrentLevel > 0)
 			ResolvePlayerCollision();
+
+		if (mInput->KeyDown(SDL_SCANCODE_SPACE))
+		{
+			ResolveBulletCollision();
+		}
 		
 
-		if (mInput->KeyPressed(SDL_SCANCODE_N))
+		if (Collider::AABB(mPlayer->mCollider,mMaps[mCurrentLevel-1]->mExit))
 		{
 			mLevelStarted = false;
 			mPlayer->Active(false);

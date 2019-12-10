@@ -37,12 +37,27 @@ void Bullet::Reload()
 	Pos(VEC2_ZERO);
 	//mDirection = VEC2_ZERO;
 }
+/*
+void Bullet::ResolveBulletCollision()
+{
+	for (Monster* m : PlayScreen::mMonsters)
+	{
+		if (Collider::AABB(this->mCollider, m->mCollider))
+		{
+			delete m;
+			m = NULL;
+			Active(false);
+		}
+	}
+}
+*/
 
 void Bullet::Update()
 {
 	//std::cout << mDirection << std::endl;
 	if (Active())
 	{
+		//ResolveBulletCollision();
 		Translate(mDirection * mSpeed * mTimer->DeltaTime());
 
 		//std::cout << Pos(local).x << "," << Pos(local).y << std::endl;

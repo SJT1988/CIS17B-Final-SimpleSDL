@@ -43,11 +43,13 @@ private:
 	// Bullet
 
 	const static int MAX_BULLETS = 4;
-	Bullet* mBullets[MAX_BULLETS];
+	
 
 public:
 
 	Collider* mCollider;
+	Bullet* mBullets[MAX_BULLETS];
+	
 
 private:
 
@@ -63,9 +65,6 @@ public:
 
 	int GetScore();
 	int GetLives();
-
-	void AddScore(int change);
-	//void WasHit();
 
 	void Update();
 	void Render();

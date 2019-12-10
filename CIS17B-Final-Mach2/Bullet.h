@@ -20,6 +20,7 @@ public:
 
 	void Fire();
 	void Reload();
+	void ResolveBulletCollision();
 
 	void Update();
 	void Render();

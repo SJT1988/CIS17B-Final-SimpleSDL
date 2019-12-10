@@ -59,6 +59,7 @@ private:
 	void CreateMonsters(int currentLevel);
 
 	void ResolvePlayerCollision();
+	void ResolveBulletCollision();
 
 public:
 	PlayScreen();
