@@ -88,6 +88,7 @@ PlayScreen::~PlayScreen()
 
 void PlayScreen::StartNextLevel()
 {
+	if (mCurrentLevel)
 	mPlayer->Parent(mMaps[mCurrentLevel - 1]);
 	mPlayer->Pos(VEC2_ZERO);
 	//std::cout << mPlayer->Pos(local) << std::endl;
@@ -208,7 +209,7 @@ void PlayScreen::CreateMaps()
 
 void PlayScreen::MonsterSpawner(int row, int col) {
 	float tempScale = RandomFloat(0.5f, 1.5f);
-	float tempSpeed = 120.f + RandomFloat(-60.0f,40.0f);
+	float tempSpeed = 80.f + RandomFloat(-40.0f,40.0f);
 	mMonsters.push_back(new Monster(0.0f, tempSpeed));
 	mMonsters.back()->Scale(Vector2(tempScale, tempScale));
 	mMonsters.back()->Parent(mMaps[mCurrentLevel - 1]);
@@ -346,16 +347,16 @@ void PlayScreen::ResolvePlayerCollision()
 	{
 		if (Collider::AABB(mPlayer->mCollider, c))
 		{
-			std::cout << "DEATH BY SPIKES!" << std::endl;
+			//std::cout << "DEATH BY SPIKES!" << std::endl;
 			mDead = true;
 			break;
 		}
 	}
 	for (Monster* m : mMonsters)
 	{
-		if (Collider::AABB(mPlayer->mCollider, m->mCollider))
+		if (m->Active() && Collider::AABB(mPlayer->mCollider, m->mCollider))
 		{
-			std::cout << "DEATH BY MONSTER!" << std::endl;
+			//std::cout << "DEATH BY MONSTER!" << std::endl;
 			mDead = true;
 		}
 	}
@@ -368,7 +369,7 @@ void PlayScreen::ResolvePlayerCollision()
 			if (Collider::AABB(mPlayer->mCollider, c))
 			{
 				mPlayer->mStuck = true;
-				std::cout << "STUCK!" << std::endl;
+				//std::cout << "STUCK!" << std::endl;
 				break;
 			}
 		}
@@ -477,6 +478,8 @@ void PlayScreen::Render()
 				mCurrentLevel++;
 				mLevelNumber->Score(mCurrentLevel);
 				mHUD->SetCurrentScore(mCurrentLevel);
+				if (mHUD->mScore > mHUD->mHighScore)
+					mHUD->SetHighScore(mCurrentLevel);
 			}
 			if (mLevelStartTimer > 0.0f && mLevelStartTimer < mLevelStartDelay)
 			{

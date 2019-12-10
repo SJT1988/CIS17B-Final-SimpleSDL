@@ -22,9 +22,11 @@ void ScreenManager::Release()
 ScreenManager::ScreenManager()
 {
 	mInput = InputManager::Instance();
+	mAudio = AudioManager::Instance();
 	mStartScreen = new StartScreen();
 	mPlayScreen = new PlayScreen();
 	mGameOverScreen = new GameOverScreen();
+	mCreditsScreen = new CreditsScreen();
 	mCurrentScreen = start;
 	GameOverTimer = 0.f;
 	mTimer = Timer::Instance();
@@ -51,13 +53,19 @@ void ScreenManager::Update()
 	case start:
 
 		mStartScreen->Update();
-		if (mInput->KeyPressed(SDL_SCANCODE_RETURN))
+		if (mInput->KeyPressed(SDL_SCANCODE_RETURN) && mStartScreen->MenuSelection() == 0)
 		{
 			mCurrentScreen = play;
 			if (mStartScreen) delete mStartScreen;
 			mStartScreen = new StartScreen();
-			//mStartScreen->ResetAnimation();
 			mPlayScreen->StartNewGame();
+		}
+		else if (mInput->KeyPressed(SDL_SCANCODE_RETURN) && mStartScreen->MenuSelection() == 1)
+		{
+			mAudio->PlaySFX("FF7_CursorOk.wav");
+			mCurrentScreen = credits;
+			if (mStartScreen) delete mStartScreen;
+			mStartScreen = new StartScreen();
 		}
 		break;
 
@@ -84,8 +92,8 @@ void ScreenManager::Update()
 			}
 
 			mCurrentScreen = gameOver;
-			if (mGameOverScreen) delete mGameOverScreen;
-			mGameOverScreen = new GameOverScreen;
+			if (mPlayScreen) delete mPlayScreen;
+			mPlayScreen = new PlayScreen;
 		}
 		break;
 
@@ -93,12 +101,20 @@ void ScreenManager::Update()
 		mGameOverScreen->Update();
 		GameOverTimer += mTimer->DeltaTime();
 
-		if (GameOverTimer >= 5) {
+		if (GameOverTimer >= 3) {
 			GameOverTimer = 0;
 			mCurrentScreen = start;
 		}
 		break;
 
+	case credits:
+		mCreditsScreen->Update();
+		if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE))
+		{
+			mCurrentScreen = start;
+			if (mCreditsScreen) delete mCreditsScreen;
+			mCreditsScreen = new CreditsScreen;
+		}
 	}
 }
 
@@ -117,5 +133,8 @@ void ScreenManager::Render()
 	case gameOver:
 		mGameOverScreen->Render();
 		break;
+
+	case credits:
+		mCreditsScreen->Render();
 	}
 }

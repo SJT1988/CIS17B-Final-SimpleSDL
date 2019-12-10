@@ -1,8 +1,23 @@
-﻿  GameManager.cpp
+﻿  Bullet.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\bullet.cpp(61): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  GameManager.cpp
 c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   PlayScreen.cpp
 c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\playscreen.cpp(215): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\playscreen.cpp(216): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Player.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(133): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(134): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(140): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(141): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(164): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(167): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(172): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(175): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(180): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(183): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(188): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(191): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   ScreenManager.cpp
 c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   main.cpp

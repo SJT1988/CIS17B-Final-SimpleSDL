@@ -12,6 +12,7 @@ private:
 	GameEntity* mTopBar;
 	Texture* mCurrentDepth;
 	Texture* mDeepestDepth;
+public:
 	ScoreBoard* mScore;
 	ScoreBoard* mHighScore;
 
