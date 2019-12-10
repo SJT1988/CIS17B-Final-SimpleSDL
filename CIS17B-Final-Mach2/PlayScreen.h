@@ -10,6 +10,8 @@ using namespace QuickSDL;
 
 class PlayScreen : public GameEntity
 {
+public:
+	bool mDead;
 private:
 	Timer* mTimer;
 	InputManager* mInput;

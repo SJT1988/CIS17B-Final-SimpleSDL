@@ -7,6 +7,7 @@ PlayScreen::PlayScreen()
 	mAudio = AudioManager::Instance();
 	mHUD = new HUD();
 
+	bool mDead = false;
 	mLevelStartDelay = 1.0f;
 	mLevelStarted = false;
 
@@ -346,6 +347,7 @@ void PlayScreen::ResolvePlayerCollision()
 		if (Collider::AABB(mPlayer->mCollider, c))
 		{
 			std::cout << "DEATH BY SPIKES!" << std::endl;
+			mDead = true;
 			break;
 		}
 	}
@@ -354,6 +356,7 @@ void PlayScreen::ResolvePlayerCollision()
 		if (Collider::AABB(mPlayer->mCollider, m->mCollider))
 		{
 			std::cout << "DEATH BY MONSTER!" << std::endl;
+			mDead = true;
 		}
 	}
 

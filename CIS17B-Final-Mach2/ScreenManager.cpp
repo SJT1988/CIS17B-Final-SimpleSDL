@@ -24,7 +24,10 @@ ScreenManager::ScreenManager()
 	mInput = InputManager::Instance();
 	mStartScreen = new StartScreen();
 	mPlayScreen = new PlayScreen();
+	mGameOverScreen = new GameOverScreen();
 	mCurrentScreen = start;
+	GameOverTimer = 0.f;
+	mTimer = Timer::Instance();
 }
 
 ScreenManager::~ScreenManager()
@@ -36,6 +39,9 @@ ScreenManager::~ScreenManager()
 
 	delete mPlayScreen;
 	mPlayScreen = NULL;
+
+	delete mGameOverScreen;
+	mGameOverScreen = NULL;
 }
 
 void ScreenManager::Update()
@@ -64,12 +70,35 @@ void ScreenManager::Update()
 				Mix_FadeOutMusic(500);
 				Mix_RewindMusic();
 			}
-			
+
 			mCurrentScreen = start;
 			if (mPlayScreen) delete mPlayScreen;
 			mPlayScreen = new PlayScreen;
 		}
+		else if (mPlayScreen->mDead == true)
+		{
+			if (Mix_PlayingMusic())
+			{
+				Mix_FadeOutMusic(500);
+				Mix_RewindMusic();
+			}
+
+			mCurrentScreen = gameOver;
+			if (mGameOverScreen) delete mGameOverScreen;
+			mGameOverScreen = new GameOverScreen;
+		}
 		break;
+
+	case gameOver:
+		mGameOverScreen->Update();
+		GameOverTimer += mTimer->DeltaTime();
+
+		if (GameOverTimer >= 5) {
+			GameOverTimer = 0;
+			mCurrentScreen = start;
+		}
+		break;
+
 	}
 }
 
@@ -83,6 +112,10 @@ void ScreenManager::Render()
 
 	case play:
 		mPlayScreen->Render();
+		break;
+
+	case gameOver:
+		mGameOverScreen->Render();
 		break;
 	}
 }

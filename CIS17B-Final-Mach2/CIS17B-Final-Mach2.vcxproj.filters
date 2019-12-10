@@ -93,6 +93,9 @@
     <ClInclude Include="Collider.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="GameOverScreen.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
