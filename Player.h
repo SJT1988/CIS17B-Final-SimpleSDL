@@ -35,19 +35,17 @@ private:
 	// Vector2 mMoveBounds;
 	// const float OFFSET = 16.0f;
 
-	//=================
-	// Collider
-
 	
 
 	//==================
 	// Bullet
 
-	const static int MAX_BULLETS = 10;
+	const static int MAX_BULLETS = 4;
 	Bullet* mBullets[MAX_BULLETS];
-	// std::vector<Bullet*> mBullets;
 
-	
+public:
+
+	Collider* mCollider;
 
 private:
 

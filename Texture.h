@@ -27,12 +27,6 @@ namespace QuickSDL {
 		// SDL_Texture* mTex;
 
 		//Used to render the texture
-		
-
-		//Width of the texture
-		int mWidth;
-		//Height of the texture
-		int mHeight;
 
 		//True if the texture is loaded from a spritesheet
 		bool mClipped;
@@ -43,6 +37,11 @@ namespace QuickSDL {
 		SDL_Rect mClipRect;
 
 	public:
+		//Width of the texture
+		int mWidth;
+		//Height of the texture
+		int mHeight;
+
 		SDL_Texture* mTex;
 		SDL_Color* mColor;
 		Graphics* mGraphics;

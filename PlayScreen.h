@@ -1,6 +1,5 @@
 #pragma once
 #include "AudioManager.h"
-//#include "Level.h"
 #include "GameEntity.h"
 #include "Map.h"
 #include "HUD.h"
@@ -50,7 +49,8 @@ private:
 	std::string mTileSetPath;
 	Map* mMaps[10];
 	Map* mFxMaps[10];
-	Map* mColliderMaps[10];
+	//Map* mColliderMaps[10];
+	std::string mColliderPaths[10];
 
 	// monsters
 	std::vector<Monster*>mMonsters;
@@ -60,9 +60,10 @@ private:
 	void StartNextLevel();
 	void CreateMaps();
 
-	void MonsterSpawner(int currentLevel,int x, int y);
-
+	void MonsterSpawner(int x, int y);
 	void CreateMonsters(int currentLevel);
+
+	void ResolvePlayerMap();
 
 public:
 	PlayScreen();

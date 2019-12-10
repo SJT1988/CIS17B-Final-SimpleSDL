@@ -1,5 +1,4 @@
 #include "Bullet.h"
-#include "BoxCollider.h"
 
 Bullet::Bullet()
 {
@@ -10,7 +9,10 @@ Bullet::Bullet()
 	mTexture->Pos(VEC2_ZERO);
 	mDirection = VEC2_ZERO;
 
-	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+	//AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+	mCollider = new Collider(Bullet::mTexture->ScaledDimensions(), Collider::Bullet);
+	mCollider->Parent(this);
+	mCollider->Pos(VEC2_ZERO);
 }
 
 Bullet::~Bullet()
@@ -18,13 +20,14 @@ Bullet::~Bullet()
 	mTimer = NULL;
 	delete mTexture;
 	mTexture = NULL;
+
+	delete mCollider;
+	mCollider = NULL;
 }
 
 void Bullet::Fire()
 {
 	Active(true);
-
-
 }
 
 
@@ -41,7 +44,7 @@ void Bullet::Update()
 	if (Active())
 	{
 		Translate(mDirection * mSpeed * mTimer->DeltaTime());
-		
+
 		//std::cout << Pos(local).x << "," << Pos(local).y << std::endl;
 		if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
 			(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
@@ -57,6 +60,6 @@ void Bullet::Render()
 	if (Active())
 	{
 		mTexture->Render();
-		PhysicsEntity::Render();
+		mCollider->Render();
 	}
 }

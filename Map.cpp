@@ -1,7 +1,6 @@
 #include "Map.h"
 #include <fstream>
 #include <iostream>
-#include "BoxCollider.h"
 //#include <regex>
 
 Map::Map(std::string tileSetPath, std::string mapFilePath, int sizeX, int sizeY, int mapIndex)
@@ -21,15 +20,31 @@ Map::~Map()
 	}
 	mMapTiles.clear();
 	mMapTiles.~vector();
-	// std::vector<Texture*>().swap(mMapTiles); // instant de-allocation!
-	for (Collider* c : mMapColliders)
+
+	for (Collider* c : mColliders1)
 	{
 		delete c;
 		c = NULL;
 	}
-	//superfulous?
-	mMapColliders.clear();
-	mMapColliders.~vector();
+	mColliders1.clear();
+	mColliders1.~vector();
+	for (Collider* c : mColliders2)
+	{
+		delete c;
+		c = NULL;
+	}
+	mColliders2.clear();
+	mColliders2.~vector();
+	for (Collider* c : mColliders3)
+	{
+		delete c;
+		c = NULL;
+	}
+	mColliders3.clear();
+	mColliders3.~vector();
+	
+	delete mExit;
+	mExit = NULL;
 }
 
 // Load the .map tiles:
@@ -62,16 +77,13 @@ void Map::LoadMap()
 }
 
 
-
-
-// TODO
-
-void Map::LoadColliders(std::string colFilePath)
+void Map::CreateColliders(std::string colFilePath)
 {
+	//std::cout << colFilePath << std::endl;
 	char c;
 	std::fstream mapFile;
 	mapFile.open(colFilePath);
-	int srcX, srcY;
+	//int srcX, srcY;
 	for (int y = 0; y < mSizeY; y++)
 	{
 		for (int x = 0; x < mSizeX; x++)
@@ -79,26 +91,33 @@ void Map::LoadColliders(std::string colFilePath)
 			mapFile.get(c);
 			if (c == '1')
 			{
-				BoxCollider* bc = new BoxCollider(Vector2(28.0f, 28.0f));
-				AddCollider(bc, Vector2(x*TILE_SIZE, y*TILE_SIZE));
-				mMapColliders.push_back(std::move(bc));
-				//BoxCollider bc = BoxCollider(Vector2(TILE_SIZE, TILE_SIZE));
-				//AddCollider(&bc);
-				//mColliders.push_back(bc);
-				//mColliders.back().Parent(this);
-				//mColliders.back().Pos(Vector2(x*TILE_SIZE, y*TILE_SIZE));
-				/*
-				auto& tileCollider(manager.addEntity());
-				tileCollider.addComponent<ColliderComponent>("terrainCollider", x * scaledSize, y * scaledSize, scaledSize, scaledSize);
-				tileCollider.addGroup(Game::groupColliders);
-				*/
+				mColliders1.push_back(new Collider(Vector2(32.0f, 32.0f), Collider::Wall));
+				mColliders1.back()->Parent(this);
+				mColliders1.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			else if (c == '2')
+			{
+				mColliders2.push_back(new Collider(Vector2(24.0f, 24.0f), Collider::Web));
+				mColliders2.back()->Parent(this);
+				mColliders2.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			else if (c == '3')
+			{
+				mColliders3.push_back(new Collider(Vector2(24.0f, 24.0f), Collider::Spikes));
+				mColliders3.back()->Parent(this);
+				mColliders3.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
+			}
+			else if (c == '4')
+			{
+				mExit = new Collider(Vector2(32.0f, 32.0f), Collider::Exit);
+				mExit->Parent(this);
+				mExit->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
 			}
 			mapFile.ignore();
 		}
 	}
 	mapFile.close();
 }
-
 
 void Map::AddTile(int srcX, int srcY, int posX, int posY)
 {
@@ -120,23 +139,20 @@ void Map::AddTile(int srcX, int srcY, int posX, int posY)
 	mMapTiles.push_back(texture);
 	mMapTiles.back().Parent(this);
 	mMapTiles.back().Pos(Vector2(posX, posY));
-	
-
-	/*
-	mMapTiles.push_back(new Texture(mTileSetPath, srcX, srcY, TILE_SIZE, TILE_SIZE));
-	mMapTiles.back()->Parent(this);
-	mMapTiles.back()->Pos(Vector2(posX, posY));
-	*/
 }
 
 void Map::Render()
 {
 	for (Texture t : mMapTiles)
 		t.Render();
-	/*
-	for (Collider c : mColliders)
-		c.PhysicsEntity::Render();
-	*/
-	for (Collider* c : mMapColliders)
+
+	// colliders
+	for (Collider* c : mColliders1)
 		c->Render();
+	for (Collider* c : mColliders2)
+		c->Render();
+	for (Collider* c : mColliders3)
+		c->Render();
+	if (mExit)
+		mExit->Render();
 }

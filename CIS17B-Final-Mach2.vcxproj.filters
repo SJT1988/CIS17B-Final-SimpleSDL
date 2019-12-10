@@ -31,12 +31,6 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{6566e27b-e5cb-4ab3-a371-251bbaa9ddf4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Physics">
-      <UniqueIdentifier>{e002263c-c93f-42e3-80a7-74731773f0a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Physics">
-      <UniqueIdentifier>{4ce02570-8316-4a9f-b7de-96fc52991f7c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedTexture.h">
@@ -93,17 +87,14 @@
     <ClInclude Include="Map.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsEntity.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxCollider.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScreen.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -158,20 +149,17 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsEntity.cpp">
-      <Filter>Source Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>Source Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="BoxCollider.cpp">
-      <Filter>Source Files\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

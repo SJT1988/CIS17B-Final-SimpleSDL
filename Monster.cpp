@@ -9,6 +9,10 @@ Monster::Monster(float speedLo, float speedHi)
 	//mTexture = new AnimatedTexture("collider.png", 0.0f, 0.0f, 32, 32, 1, 1.0f, AnimatedTexture::horizontal);
 	mTexture = new AnimatedTexture("monster.png", 0.0f, 0.0f, 64, 64, 4, 0.25f, AnimatedTexture::horizontal);
 	mTexture->Parent(this);
+
+	mCollider = new Collider(Vector2(32.0f, 32.0f), Collider::Monster);
+	mCollider->Parent(this);
+	mCollider->Pos(VEC2_ZERO);
 }
 
 Monster::~Monster()
@@ -37,6 +41,9 @@ void Monster::Update()
 
 void Monster::Render()
 {
-	if (Active()) 
+	if (Active())
+	{
 		mTexture->Render();
+		mCollider->Render();
+	}
 }

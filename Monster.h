@@ -1,9 +1,10 @@
 #pragma once
 #include "AnimatedTexture.h"
+#include "Collider.h";
 
 using namespace QuickSDL;
 
-class Monster:public GameEntity
+class Monster :public GameEntity
 {
 private:
 	Timer* mTimer;
@@ -14,7 +15,8 @@ public:
 
 	AnimatedTexture* mTexture;
 	float mSpeed;
-	
+	Collider* mCollider;
+
 public:
 
 	Monster(float speedLo, float speedHi);
