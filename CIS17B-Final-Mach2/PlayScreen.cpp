@@ -384,10 +384,13 @@ void PlayScreen::ResolveBulletCollision()
 		{
 			for (Monster* m : mMonsters)
 			{
-				if (Collider::AABB(b->mCollider, m->mCollider))
+				if (m->Active())
 				{
-					b->Active(false);
-					m->Active(false);
+					if (Collider::AABB(b->mCollider, m->mCollider))
+					{
+						m->Active(false);
+						b->Reload();
+					}
 				}
 			}
 		}
@@ -419,10 +422,7 @@ void PlayScreen::Update()
 		if (mCurrentLevel > 0)
 			ResolvePlayerCollision();
 
-		if (mInput->KeyDown(SDL_SCANCODE_SPACE))
-		{
-			ResolveBulletCollision();
-		}
+		ResolveBulletCollision();
 		
 
 		if (Collider::AABB(mPlayer->mCollider,mMaps[mCurrentLevel-1]->mExit))

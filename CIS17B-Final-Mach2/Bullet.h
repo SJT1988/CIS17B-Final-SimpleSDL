@@ -9,7 +9,7 @@ class Bullet : public GameEntity
 private:
 	Timer* mTimer;
 	Texture* mTexture;
-	int mSpeed = 400;
+	int mSpeed = 200;
 
 public:
 	Vector2 mDirection;

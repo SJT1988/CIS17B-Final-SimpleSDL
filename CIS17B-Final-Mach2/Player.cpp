@@ -74,11 +74,6 @@ Player::Player()
 
 	mMoveSpeed = 160.0f;
 
-	// Moving next line to PlayScreen.cpp:
-	// The player's body occupies a 32x32 pixel region, and his reference is his center, so 32/2 = 16
-	//provides the correct offset for the bounds.
-	// mMoveBounds = Vector2(Graphics::Instance()->SCREEN_WIDTH - OFFSET, Graphics::Instance()->SCREEN_HEIGHT - OFFSET);
-
 	//====================
 	// Bullets
 
@@ -86,9 +81,6 @@ Player::Player()
 	{
 		mBullets[i] = new Bullet();
 	}
-
-	//std::cout << "Bullet collider Texture dim:" << mBullets[0]->mTexture->ScaledDimensions() << std::endl;
-	//std::cout << "Bullet collider dim:" << mBullets[0]->mCollider->mSize << std::endl;
 
 	//======================
 	// Initilize Texture:
@@ -124,11 +116,6 @@ void Player::HandleMovement()
 
 	if (mInput->KeyDown(SDL_SCANCODE_SPACE))
 	{
-		// I made this and its not helping
-		/*
-		if (mInput->KeyReleased(SDL_SCANCODE_SPACE))
-			mPlayerTex->FrameReset();
-		*/
 		if (mDirection == -VEC2_UP ||
 			mDirection == Vector2(-sqrt(2) / 2, -sqrt(2) / 2) ||
 			mDirection == Vector2(sqrt(2) / 2, -sqrt(2) / 2))
@@ -247,17 +234,6 @@ void Player::HandleMovement()
 			mFlip = SDL_FLIP_NONE;
 		}
 	}
-
-	// ====================
-	// Handle error bounds: This got moved to PlayScreen.cpp
-	/*
-	Vector2 pos = Pos(local);
-	if (pos.x < OFFSET) pos.x = OFFSET;
-	else if (pos.x > mMoveBounds.x) pos.x = mMoveBounds.x;
-	if (pos.y < OFFSET) pos.y = OFFSET;
-	else if (pos.y > mMoveBounds.y) pos.y = mMoveBounds.y;
-	Pos(pos);
-	*/
 }
 
 void Player::Visible(bool visible)
@@ -297,16 +273,6 @@ void Player::Update()
 
 	if (mInput->KeyPressed(SDL_SCANCODE_SPACE))
 	{
-		/*
-		if (mBullets.size() < MAX_BULLETS)
-		{
-			Bullet* bullet = new Bullet(mDirection);
-			bullet->Parent(this);
-			bullet->Pos(VEC2_ZERO);
-			bullet->Active(true);
-			mBullets.push_back(bullet);
-		}
-		*/
 		for (Bullet* b : mBullets)
 		{
 			if (!(b->Active()))

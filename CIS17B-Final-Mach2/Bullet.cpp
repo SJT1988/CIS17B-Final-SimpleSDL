@@ -9,7 +9,6 @@ Bullet::Bullet()
 	mTexture->Pos(VEC2_ZERO);
 	mDirection = VEC2_ZERO;
 
-	//AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 	mCollider = new Collider(Bullet::mTexture->ScaledDimensions(), Collider::Bullet);
 	mCollider->Parent(this);
 	mCollider->Pos(VEC2_ZERO);
@@ -35,32 +34,13 @@ void Bullet::Reload()
 {
 	Active(false);
 	Pos(VEC2_ZERO);
-	//mDirection = VEC2_ZERO;
 }
-/*
-void Bullet::ResolveBulletCollision()
-{
-	for (Monster* m : PlayScreen::mMonsters)
-	{
-		if (Collider::AABB(this->mCollider, m->mCollider))
-		{
-			delete m;
-			m = NULL;
-			Active(false);
-		}
-	}
-}
-*/
 
 void Bullet::Update()
 {
-	//std::cout << mDirection << std::endl;
 	if (Active())
 	{
-		//ResolveBulletCollision();
 		Translate(mDirection * mSpeed * mTimer->DeltaTime());
-
-		//std::cout << Pos(local).x << "," << Pos(local).y << std::endl;
 		if ((Pos(world).x < 0 || Pos(world).x > Graphics::Instance()->SCREEN_WIDTH) ||
 			(Pos(world).y < 0 || Pos(world).y > Graphics::Instance()->SCREEN_HEIGHT))
 		{

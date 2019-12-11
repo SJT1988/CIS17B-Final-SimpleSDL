@@ -8,7 +8,6 @@ class Collider : public GameEntity
 private:
 
 	static const int MAX_VERTS = 4;
-	
 
 public:
 
@@ -19,7 +18,7 @@ public:
 protected:
 
 	TriggerType mTrigger;
-	static const bool SHOW_COLLIDERS = false;
+	static const bool SHOW_COLLIDERS = true;
 	Texture* mTexture;
 
 public:
