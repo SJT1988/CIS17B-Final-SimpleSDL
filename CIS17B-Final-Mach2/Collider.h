@@ -18,7 +18,7 @@ public:
 protected:
 
 	TriggerType mTrigger;
-	static const bool SHOW_COLLIDERS = true;
+	static const bool SHOW_COLLIDERS = false;
 	Texture* mTexture;
 
 public:
