@@ -42,7 +42,7 @@ private:
 	//==================
 	// Bullet
 
-	const static int MAX_BULLETS = 4;
+	const static int MAX_BULLETS = 6;
 	
 
 public:

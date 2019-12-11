@@ -1,8 +1,24 @@
-﻿  Map.cpp
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(114): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(120): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\map.cpp(147): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  GameManager.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  PlayScreen.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\playscreen.cpp(216): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Player.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(121): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(127): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(128): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(151): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(154): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(159): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(162): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(167): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(170): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(175): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\player.cpp(178): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  ScreenManager.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  main.cpp
+c:\users\spencer\documents\github\cis17b-final-simplesdl\cis17b-final-mach2\monster.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
   CIS17B-Final-Mach2.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS17B-Final-SimpleSDL\CIS17B-Final-Mach2\Debug\CIS17B-Final-Mach2.exe
