@@ -8,13 +8,13 @@ class Monster :public GameEntity
 {
 private:
 	Timer* mTimer;
-
 	float mSpeedLo;
 	float mSpeedHi;
 public:
 
 	AnimatedTexture* mTexture;
 	float mSpeed;
+	bool targetSighted;
 	Collider* mCollider;
 
 public:
@@ -24,7 +24,6 @@ public:
 
 	// Lerp between enemy's position and player's position
 	void Move(Vector2 target);
-
 	void Update();
 	void Render();
 };

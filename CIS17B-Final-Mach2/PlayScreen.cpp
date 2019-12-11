@@ -416,7 +416,12 @@ void PlayScreen::Update()
 		for (Monster* m : mMonsters)
 		{
 			m->Update();
-			m->Move(mPlayer->Pos());			
+			// Monster will only chace player after they are at most 320px from each other THE FIRST TIME...
+			if ((m->Pos() - mPlayer->Pos()).Magnitude() <= 320.0f)
+				m->targetSighted = true;
+			// ...this way, player is chaced even if they retreat.
+			if (m->targetSighted == true)
+				m->Move(mPlayer->Pos());			
 		}
 		
 		if (mCurrentLevel > 0)

@@ -109,7 +109,7 @@ void Map::CreateColliders(std::string colFilePath)
 			}
 			else if (c == '3') //spikes
 			{
-				mColliders3.push_back(new Collider(Vector2(20.0f, 20.0f), Collider::Spikes));
+				mColliders3.push_back(new Collider(Vector2(18.0f, 18.0f), Collider::Spikes));
 				mColliders3.back()->Parent(this);
 				mColliders3.back()->Pos(Vector2(x * (TILE_SIZE), y * (TILE_SIZE)));
 			}
